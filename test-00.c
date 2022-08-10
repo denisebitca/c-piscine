@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test-00.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <rbitca@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:07:54 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/10 15:57:32 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/10 17:35:20 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "./00/ex02/ft_print_reverse_alphabet.c"
 #include "./00/ex03/ft_print_numbers.c"
 #include "./00/ex04/ft_is_negative.c"
-
+#include "./00/ex05/ft_print_comb.c"
 
 int	main(void)
 {
@@ -32,5 +32,7 @@ int	main(void)
 	ft_is_negative(-1);
 	write(1, "\n", 1);
 	ft_is_negative(1);
+	write(1, "\nexercise 5:\n", 13);
+	ft_print_comb();
 	return (0);
 }	
