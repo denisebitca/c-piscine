@@ -6,7 +6,7 @@
 /*   By: rbitca <rbitca@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:07:54 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/11 10:11:01 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/11 13:23:07 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,13 @@ int	main(void)
 	write(1, "\nexercise 6:\n", 13);
 	ft_print_comb2();
 	write(1, "\nexercise 7:\n", 13);
-	ft_putnbr(42);
+	ft_putnbr(-2147483648);
+	write(1, "\n", 1);
+	ft_putnbr(-2147483647);
+	write(1, "\n", 1);
+	ft_putnbr(2147483646);
+	write(1, "\n", 1);
+	ft_putnbr(2147483647);
 	write(1, "\n", 1);
 	ft_putnbr(1234);
 	write(1, "\n", 1);
