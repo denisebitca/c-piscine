@@ -6,7 +6,7 @@
 /*   By: rbitca <rbitca@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:07:54 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/10 17:35:20 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/11 10:11:01 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "./00/ex03/ft_print_numbers.c"
 #include "./00/ex04/ft_is_negative.c"
 #include "./00/ex05/ft_print_comb.c"
+#include "./00/ex06/ft_print_comb2.c"
+#include "./00/ex07/ft_putnbr.c"
 
 int	main(void)
 {
@@ -34,5 +36,15 @@ int	main(void)
 	ft_is_negative(1);
 	write(1, "\nexercise 5:\n", 13);
 	ft_print_comb();
+	write(1, "\nexercise 6:\n", 13);
+	ft_print_comb2();
+	write(1, "\nexercise 7:\n", 13);
+	ft_putnbr(42);
+	write(1, "\n", 1);
+	ft_putnbr(1234);
+	write(1, "\n", 1);
+	ft_putnbr(8);
+	write(1, "\n", 1);
+	ft_putnbr(-1234);
 	return (0);
 }	
