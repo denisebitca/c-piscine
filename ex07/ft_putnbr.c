@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 09:15:19 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/11 10:11:24 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/11 13:54:31 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,27 @@ void	ft_putnbr(int nb)
 	int	len;
 	int	flag;
 
-	flag = 0;
-	if (nb < 0)
+	if (nb == -2147483648)
+		write(1, "-2147483648", 11);
+	else
 	{
-		flag = 1;
-		nb = nb * -1;
+		flag = 0;
+		if (nb < 0)
+		{
+			flag = 1;
+			nb = nb * -1;
+		}
+		if (flag)
+			ft_write('-');
+		len = ft_len(nb);
+		while (len > 1)
+		{
+			ft_write(nb / len + '0');
+			nb = nb % len;
+			len = len / 10;
+		}
+		ft_write(nb % 10 + '0');
 	}
-	len = ft_len(nb);
-	if (flag)
-		ft_write('-');
-	while (len > 1)
-	{
-		ft_write(nb / len + '0');
-		nb = nb % len;
-		len = len / 10;
-	}
-	ft_write(nb % 10 + '0');
 }
 
 int	ft_len(int nb)
@@ -49,13 +54,13 @@ int	ft_len(int nb)
 		return (1);
 	else
 	{
-		while (val != 0)
+		while (val > 9)
 		{
 			multiplier = multiplier * 10;
 			val = nb / multiplier;
 		}
 	}
-	return (multiplier / 10);
+	return (multiplier);
 }
 
 void	ft_write(char c)
