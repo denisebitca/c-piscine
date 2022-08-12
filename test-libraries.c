@@ -12,12 +12,32 @@
 
 #include <unistd.h>
 #include <stdio.h>
-#include "./00/ex07/ft_putnbr.c"
+#include <string.h>
 
 void	test_int(int expected, int received, char* description)
 {
 	printf("Test: %s\n", description);
 	if(expected == received)
+		printf("Test passed! ");
+	else
+		printf("Test failed! ");
+	printf("expected: %i, received: %i\n", expected, received);
+}
+
+void	test_char(char expected, char received, char* description)
+{
+	printf("Test: %s\n", description);
+	if(expected == received)
+		printf("Test passed! ");
+	else
+		printf("Test failed! ");
+	printf("expected: %i, received: %i\n", expected, received);
+}
+
+void	test_str(char *expected, char *received, char *description)
+{
+	printf("Test: %s\n", description);
+	if(strcmp(expected, received) == 0)
 		printf("Test passed! ");
 	else
 		printf("Test failed! ");
