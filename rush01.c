@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush00.c                                           :+:      :+:    :+:   */
+/*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 09:05:59 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 10:23:10 by mjourno          ###   ########.fr       */
+/*   Updated: 2022/08/13 10:38:19 by mjourno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,21 @@ void	rush(int x, int y)
  *
  * Description: Writes a character to the current (x, y) point
  *
- * If current row first or last:
- * 	If current column position first or last:
- * 		write the corner character
+ * If current row first:
+ * 	If current column position first:
+ * 		write the first corner character
+ * 	If current column position first:
+ * 		Write the second corner character
  * 	Otherwise
- * 		write the dash character
+ * 		write the * character
+ *If current row last:
+ * 	If current column position first:
+ *		write the third corner character
+ *	If current column position last:
+ *		write the fourt corner character
  * Otherwise
  * 	If current column position first or last
- * 		write the | character
+ * 		write the * character
  * 	Otherwise
  * 		write the space character 
  * */
