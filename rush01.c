@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush00.c                                           :+:      :+:    :+:   */
+/*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 09:05:59 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 10:23:10 by mjourno          ###   ########.fr       */
+/*   Updated: 2022/08/13 11:04:35 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ void	ft_linepopulate(int x, int y, int i, int j);
  * int i - iterator for height = 0;
  * int j - iterator for length = 0;
  *
- * For each row
- * 	For each column
- * 		Write the corresponding character to the current (x, y) point
- * 	Write a newline character
+ * If length is larger than 0 (ever heard of a rectangle that's 0 wide?)
+ * 	For each row
+ * 		For each column
+ * 			Write the corresponding character to the current (x, y) point
+ * 		Write a newline character
  * */
+
 void	rush(int x, int y)
 {
 	int	i;
@@ -39,16 +41,19 @@ void	rush(int x, int y)
 
 	i = 0;
 	j = 0;
-	while (y > i)
+	if (x > 0)
 	{
-		while (x > j)
+		while (y > i)
 		{
-			ft_linepopulate(x, y, i, j);
-			j++;
+			while (x > j)
+			{
+				ft_linepopulate(x, y, i, j);
+				j++;
+			}
+			j = 0;
+			i++;
+			ft_putchar('\n');
 		}
-		j = 0;
-		i++;
-		ft_putchar('\n');
 	}
 }
 
@@ -64,14 +69,21 @@ void	rush(int x, int y)
  *
  * Description: Writes a character to the current (x, y) point
  *
- * If current row first or last:
- * 	If current column position first or last:
- * 		write the corner character
+ * If current row first:
+ * 	If current column position first:
+ * 		write the first corner character
+ * 	If current column position first:
+ * 		Write the second corner character
  * 	Otherwise
- * 		write the dash character
+ * 		write the * character
+ *If current row last:
+ * 	If current column position first:
+ *		write the third corner character
+ *	If current column position last:
+ *		write the fourt corner character
  * Otherwise
  * 	If current column position first or last
- * 		write the | character
+ * 		write the * character
  * 	Otherwise
  * 		write the space character 
  * */
