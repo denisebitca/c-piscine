@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:33:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 12:34:31 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:31:13 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,21 @@ static char *rand_string(char *str, size_t size, int numeric)
     {
     	charset = "01234aBcDeFgHiJkLmNoPqRsTuVwXyZ56789";
     }
-    else
+    else if (numeric == 3)
     {
-    	charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	charset = "abcdefghijklmnopqrstuvwxyz";
+    }
+    else if (numeric == 4)
+    {
+	charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+    else if (numeric == 5)
+    {
+	charset = "\1\2\3\4\5\6\7\10\11\12\13\14A5L";
+    }
+    else 
+    {
+    	charset = "aBcDeFgHiJkLmNoPqRsTuVwXyZ";
     }
     if (size) {
         --size;
