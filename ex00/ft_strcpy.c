@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 09:18:27 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/12 14:41:34 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/13 11:26:52 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_strlen(char *str)
 	i = 0;
 	while (str[i] != '\0')
 		i++;
-	printf("DEBUG: %i\n", i);
-	printf("DEBUG: %s\n", str);
 	return (i);
 }
 
