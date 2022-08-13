@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 11:31:28 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 12:32:24 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/13 12:46:32 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@ int	ft_str_is_alpha(char *str)
 	int	i;
 
 	i = 0;
-	printf("DEBUG: %s\n", str);
 	while (str[i] != '\0')
 	{
 		if (str[i] < 'A')
