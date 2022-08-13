@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 08:36:52 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/12 14:39:51 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/13 12:04:30 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	
 	srand(time(NULL));
 	int size = rand() % 99;
-	char *one = rand_string_alloc(size);
+	char *one = rand_string_alloc(size, 0);
 	char ex00two[size];
 	char ex00t2[size];
 

@@ -5,11 +5,16 @@ EXE :=$(SRC:.c=)
 EXNUM :=02
 
 .SILENT:
+
 all:$(EXE)
-	echo "Norminette says:\n"
-	norminette -R CheckForbiddenSourceHeader ../$(EXNUM)
 
 $(EXE):$(SRC)
 	$C $@.c $(CFLAGS) -o $@.test
 	./$@.test
 	rm -rf ./$@.test
+	echo "Norminette says:\n"
+	norminette -R CheckForbiddenSourceHeader ../$(EXNUM)/ex$@
+	echo "\n"
+
+runNorminette:
+	norminette -R CheckForbiddenSourceHeader ../$(EXNUM)

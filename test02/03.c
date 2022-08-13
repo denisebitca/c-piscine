@@ -1,49 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01.c                                               :+:      :+:    :+:   */
+/*   03.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 08:36:52 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 12:04:20 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/13 12:40:46 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/13 12:43:11 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../test-libraries.c"
-#include "../02/ex01/ft_strncpy.c"
-#include <string.h>
+#include "../02/ex03/ft_str_is_numeric.c"
 
 int	main(void)
 {
-	//Test ex01
-	
 	srand(time(NULL));
-
-	int r = rand() % 99;
-
-	char *one = rand_string_alloc(r, 0);
-
-	char two[r];
-	
-	strcpy(two, one);
-
-	int size = r / 2;
-
-	char ex01t1[size];
-	char ex01t2[size];
-
-	strncpy(ex01t1, one, size);
-
-	ft_strncpy(ex01t2, two, size);
-
-	int i = 0;
-
-	while(i < size)
-	{
-		test_char(ex01t1[i], ex01t2[i], "ex01 - random string test");
-		i++;
-	}
-
-	return (0);
+	test_int(1, ft_str_is_numeric(rand_string_alloc(15, 1)), "ex03 - only numbers");
+	test_int(0, ft_str_is_numeric(rand_string_alloc(15, 0)), "ex03 - only letters");
+	test_int(0, ft_str_is_numeric(rand_string_alloc(15, 2)), "ex03 - letters and numbers");
+	test_int(1, ft_str_is_numeric(""), "ex03 - nothing");
 }

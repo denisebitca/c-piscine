@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:33:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/12 14:30:51 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/13 12:34:31 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,21 @@
 #include <stdlib.h>
 #include <time.h>
 
-static char *rand_string(char *str, size_t size)
+static char *rand_string(char *str, size_t size, int numeric)
 {
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJK...";
+    const char *charset;
+    if (numeric == 1)
+    {
+    	charset = "0123456789";
+    } 
+    else if (numeric == 2)
+    {
+    	charset = "01234aBcDeFgHiJkLmNoPqRsTuVwXyZ56789";
+    }
+    else
+    {
+    	charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
     if (size) {
         --size;
         for (size_t n = 0; n < size; n++) {
@@ -29,12 +41,12 @@ static char *rand_string(char *str, size_t size)
     return str;
 }
 
-char* rand_string_alloc(size_t size)
+char* rand_string_alloc(size_t size, int numeric)
 {
-	 srand(time(NULL));
+     srand(time(NULL));
      char *s = malloc(size + 1);
      if (s) {
-         rand_string(s, size);
+         rand_string(s, size, numeric);
      }
      return s;
 }
