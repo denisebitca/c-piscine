@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:28:20 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 19:32:24 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/14 08:29:53 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_putchar(char c);
 void	ft_writehex(char c);
 void	ft_hexloop(int quotient, int *i, char *hexnum);
+char	*ft_strlowcase(char *str);
 
 void	ft_putstr_non_printable(char *str)
 {
@@ -41,29 +42,24 @@ void	ft_putchar(char c)
 
 void	ft_writehex(char c)
 {
-	int		quotient;
 	int		i;
 	char	hexnum[3];
 
 	if (c >= 0 && c <= 9)
-		ft_putchar(c + '0');
+	{
+		hexnum[0] = '0';
+		hexnum[1] = c + '0';
+	}
 	else
 	{
 		i = 1;
-		quotient = c;
-		ft_hexloop(quotient, &i, hexnum);
+		ft_hexloop(c, &i, hexnum);
 		if (i != -1)
-		{
-			hexnum[0] = hexnum[1];
-			hexnum[1] = '\0';
-			write(1, hexnum, 2);
-		}
-		else
-		{
-			hexnum[2] = '\0';
-			write(1, hexnum, 3);
-		}
+			hexnum[0] = '0';
 	}
+	hexnum[2] = '\0';
+	ft_strlowcase(hexnum);
+	write(1, hexnum, 3);
 }
 
 void	ft_hexloop(int quotient, int *i, char *hexnum)
@@ -81,4 +77,18 @@ void	ft_hexloop(int quotient, int *i, char *hexnum)
 		*i = *i - 1;
 		quotient = quotient / 16;
 	}
+}
+
+char	*ft_strlowcase(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] - 'A' + 'a';
+		i++;
+	}
+	return (str);
 }
