@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 18:13:26 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 16:09:16 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/14 16:26:27 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 
 	printf("Test: ex11 - printing all characters\nThis test has to be checked manually!\n");
 
-	i = 0;
+	i = -128;
 	test[1] = '\0';
 	while(i != 256)
 	{
