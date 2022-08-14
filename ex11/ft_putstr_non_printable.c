@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:28:20 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 13:47:50 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/14 16:09:06 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@ void	ft_putstr_non_printable(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] < 32)
-			ft_writehex(str[i]);
-		else
+		c = (unsigned char) str[i];
+		if (c < 32 || c > 126)
 		{
-			c = (unsigned char) str[i];
-			if (c >= 127)
-				ft_writehex(str[i]);
-			else
-				ft_putchar(str[i]);
+			ft_writehex(c);
 		}
+		else
+			ft_putchar(c);
 		i++;
 	}
 }
@@ -48,8 +45,6 @@ void	ft_writehex(int c)
 {
 	char	*table;
 
-	if (c < 0)
-		c = -c;
 	table = "0123456789abcdef";
 	ft_putchar('\\');
 	ft_putchar(table[c / 16]);
