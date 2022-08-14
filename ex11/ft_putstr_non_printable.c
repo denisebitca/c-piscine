@@ -6,31 +6,35 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:28:20 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 08:29:53 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/14 13:47:50 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 void	ft_putchar(char c);
-void	ft_writehex(char c);
-void	ft_hexloop(int quotient, int *i, char *hexnum);
-char	*ft_strlowcase(char *str);
+void	ft_writehex(int c);
+/*void	ft_hexloop(int quotient, int *i, char *hexnum);
+char	*ft_strlowcase(char *str);*/
 
 void	ft_putstr_non_printable(char *str)
 {
-	int	i;
+	int				i;
+	unsigned char	c;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i] >= 0 && str[i] < 32) || str[i] == 127)
-		{
-			ft_putchar('\\');
+		if (str[i] < 32)
 			ft_writehex(str[i]);
-		}
 		else
-			ft_putchar(str[i]);
+		{
+			c = (unsigned char) str[i];
+			if (c >= 127)
+				ft_writehex(str[i]);
+			else
+				ft_putchar(str[i]);
+		}
 		i++;
 	}
 }
@@ -40,7 +44,18 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_writehex(char c)
+void	ft_writehex(int c)
+{
+	char	*table;
+
+	if (c < 0)
+		c = -c;
+	table = "0123456789abcdef";
+	ft_putchar('\\');
+	ft_putchar(table[c / 16]);
+	ft_putchar(table[c % 16]);
+}
+/*void	ft_writehex(char c)
 {
 	int		i;
 	char	hexnum[3];
@@ -91,4 +106,4 @@ char	*ft_strlowcase(char *str)
 		i++;
 	}
 	return (str);
-}
+}*/
