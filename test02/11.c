@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 18:13:26 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 19:27:43 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/14 08:26:29 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 
 int	main(void)
 {
-	srand(time(NULL));
-	
 	char c;
 
-	c = 0;
-	while(c++ < 20)
+	printf("Test: ex11 - printing all non printable characters\nThis test has to be checked manually!\n");
+
+	c = 1;
+	while(c != 32)
+	{
 		ft_putstr_non_printable(&c);
-	
+		c++;
+	}
+
 	c = 127;
 	ft_putstr_non_printable(&c);
 }
