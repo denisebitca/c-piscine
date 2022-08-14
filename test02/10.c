@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 08:36:52 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 17:17:39 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/14 15:15:49 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(void)
 
 	int i = 0;
 
-	test_str(ex01t1, ex01t2, "ex10 - random string");
+	test_str(ex01t1, ex01t2, "ex10 - compare strlcpy and ft_strlcpy");
 
 	test_char('\0', ex01t2[i-1], "ex10 - last byte null");
 
