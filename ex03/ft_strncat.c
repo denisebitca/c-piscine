@@ -17,7 +17,7 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 	unsigned int	i;
 	unsigned int	distsize;
 
-	distsize = ft_strlen(dist);
+	distsize = ft_strlen(dest);
 	i = 0;
 	if (nb)
 	{
