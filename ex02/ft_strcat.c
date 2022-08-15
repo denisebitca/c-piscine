@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 17:04:03 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 17:18:47 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/15 09:47:53 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@ int	ft_strlen(char *str);
 char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
-	int	srcsize;
+	int	destsize;
 
-	srcsize = ft_strlen(dest);
+	destsize = ft_strlen(dest) - 1;
 	i = 0;
 	while (src[i])
 	{
-		dest[srcsize + i] = src[i];
+		dest[destsize + i] = src[i];
 		i++;
 	}
-	dest[srcsize + i] = '\0';
+	dest[destsize + i] = '\0';
 	return (dest);
 }
 

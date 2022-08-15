@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 17:04:03 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 20:46:02 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/15 09:52:27 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@ unsigned int	ft_strlen(char *str);
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int	i;
-	unsigned int	srcsize;
+	unsigned int	distsize;
 
-	srcsize = ft_strlen(src);
+	distsize = ft_strlen(dist);
 	i = 0;
 	if (nb)
 	{
 		while (src[i] && i < nb)
 		{
-			dest[srcsize + i] = src[i];
+			dest[distsize + i] = src[i];
 			i++;
 		}
-		dest[srcsize + i] = '\0';
+		dest[distsize + i] = '\0';
 	}
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 17:23:21 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 17:40:14 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/15 10:41:06 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,29 @@ char	*ft_strstr(char *str, char *to_find)
 {
 	int		cmp;
 	char	*ptr;
-	int		needlesize;
+	int		i;
+	int		j;
 
-	needlesize = ft_strlen(to_find);
 	cmp = 0;
-	while (*str)
+	i = 0;
+	j = 0;
+	ptr = str;
+	if (!ft_strlen(to_find))
+		return ("");
+	while (str[i])
 	{
-		if (cmp == needlesize)
-			return (ptr);
-		if (*str == to_find[cmp])
+		if (cmp == ft_strlen(to_find))
 		{
-			if (cmp == 0)
-				*ptr = *str;
-			cmp++;
+			while (j++ < (i + 1 - ft_strlen(to_find)))
+				ptr = &(*str++);
+			return (ptr);
 		}
+		if (str[i++] == to_find[cmp])
+			cmp++;
 		else
 			cmp = 0;
-		*str++;
 	}
-	return (NULL);
+	return ("");
 }
 
 int	ft_strlen(char *str)
