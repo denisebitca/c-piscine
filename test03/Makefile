@@ -2,7 +2,7 @@ C :=gcc
 CFLAGS :=-Wall -Wextra -Werror -lbsd
 SRC :=$(wildcard *.c)
 EXE :=$(SRC:.c=)
-EXNUM :=02
+EXNUM :=03
 
 .SILENT:
 
