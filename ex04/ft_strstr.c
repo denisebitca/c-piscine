@@ -24,7 +24,7 @@ char	*ft_strstr(char *str, char *to_find)
 	j = 0;
 	ptr = str;
 	if (!ft_strlen(to_find))
-		return ("");
+		return (str);
 	while (str[i])
 	{
 		if (cmp == ft_strlen(to_find))
@@ -38,7 +38,7 @@ char	*ft_strstr(char *str, char *to_find)
 		else
 			cmp = 0;
 	}
-	return ("");
+	return (0);
 }
 
 int	ft_strlen(char *str)
