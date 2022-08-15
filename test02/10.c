@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 08:36:52 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 15:15:49 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/15 10:34:54 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,47 @@
 #include "../02/ex10/ft_strlcpy.c"
 #include <bsd/string.h>
 
-int	main(void)
+void test_strlcpy_real(int size)
 {
-	//Test ex01
-	
-	srand(time(NULL));
+    char string[] = "Hello there, Venus";
+    char buffer[19];
+    int r;
 
-	int r = rand() % 99;
+    r = strlcpy(buffer,string,size);
 
-	char one[r];
-	
-	rand_string(one, r, 0);
+    printf("REAL STRLCPY: Copied '%s' into '%s', length %d\n",
+            string,
+            buffer,
+            r
+          );
+}
 
-	char two[r];
-	
-	strcpy(two, one);
+void test(int size)
+{
+    char string[] = "Hello there, Venus";
+    char buffer[19];
+    int r;
 
-	int size = r / 2;
+    r = ft_strlcpy(buffer,string,size);
 
-	char ex01t1[size];
-	char ex01t2[size];
+    printf("FAKE STRLCPY: Copied '%s' into '%s', length %d\n",
+            string,
+            buffer,
+            r
+          );
+}
 
-	strlcpy(ex01t1, one, size);
+int main()
+{
+    test_strlcpy_real(19);
+    test_strlcpy_real(10);
+    test_strlcpy_real(1);
+    test_strlcpy_real(0);
 
-	ft_strlcpy(ex01t2, two, size);
+    test(19);
+    test(10);
+    test(1);
+    test(0);
 
-	int i = 0;
-
-	test_str(ex01t1, ex01t2, "ex10 - compare strlcpy and ft_strlcpy");
-
-	test_char('\0', ex01t2[i-1], "ex10 - last byte null");
-
-	return (0);
+    return(0);
 }
