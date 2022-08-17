@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04.c                                               :+:      :+:    :+:   */
+/*   05.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 10:02:55 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/16 14:04:57 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/17 08:42:13 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/17 08:55:16 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../test-libraries.c"
-#include "../03/ex04/ft_strstr.c"
-#include <string.h>
+#include <stdio.h>
+#include "../04/ex05/ft_atoi_base.c"
 
 int	main(void)
 {
-	char	*t3 = "Find my needle edle eeedle";
-//char	*t4 = ft_strstr(t3, "feedle");
-
-	test_str(strstr(t3, "needle"), ft_strstr(t3, "needle"), "ex04 - strstr comparison");
-	//test_str("", t4, "ex04, empty result comparison");
+	printf("%i\n", ft_atoi_base("1000000000000000000000000000000", "01"));
+	printf("%i\n", ft_atoi_base("", "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./"));
 }

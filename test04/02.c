@@ -1,6 +1,11 @@
 #include "../04/ex02/ft_putnbr.c"
 #include <limits.h>
 
+void	ft_write(char c)
+{
+	write(1, &c, 1);
+}
+
 int	main(void)
 {
 	ft_putnbr(INT_MAX);

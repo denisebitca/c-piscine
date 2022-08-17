@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 10:02:55 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/14 16:56:08 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/15 14:02:31 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,8 @@ int	main(void)
 
 	test_int(strncmp(t1, t2, 16), ft_strncmp(t1, t2, 16), "ex01 - strcmp test, random");
 
-	char	*t3 = "test string that is equal until NOW";
+	char	*t3 = "tert string that is equal until NOW";
 	char	*t4 = "test string that is equal until now";
 
-	test_int(strncmp(t3, t4, 10), ft_strncmp(t3, t4, 10), "ex01 - strcmp test, given");
-
-	test_int(strncmp(t1, t1, 10), ft_strncmp(t1, t1, 10), "ex01 - identical string test, random");
-
-	test_int(strncmp(t3, t3, 10), ft_strncmp(t3, t3, 10), "ex01 - identical string test, given"); 
+	test_int(strncmp(t3, t4, 2), ft_strncmp(t3, t4, 2), "ex01 - strcmp test, given");
 }

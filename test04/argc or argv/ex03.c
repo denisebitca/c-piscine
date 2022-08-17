@@ -1,0 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ex03.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/15 19:10:13 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/15 19:10:22 by rbitca           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#include <stdio.h>
+/*#include "../../04/ex03/ft_atoi.c"*/
+
+int	ft_atoi(char *str)
+{
+	unsigned int	result;
+	int	neg;
+	int	i;
+
+	i = 0;
+	neg = 0;
+	result = 0;
+	while (str[i] == ' ')
+		i++;
+	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg++;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result += str[i] - '0';
+		if (str[i + 1] >= '0' && str[i] <= '9')
+			result *= 10;
+		i++;
+	}
+	if (neg % 2 == 1)
+		return (-result);
+	return (result);
+}
+
+int	main(int argc, char **argv)
+{
+	if(argc == 2)
+		printf("%i\n", ft_atoi(argv[1]));
+}
