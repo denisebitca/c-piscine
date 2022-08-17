@@ -12,58 +12,24 @@
 
 #include <unistd.h>
 
-int		ft_len(int nb);
-void	ft_write(char c);
-
-void	ft_putnbr(int nb)
+void	ft_putnbr(int nbr)
 {
-	int	len;
-	int	flag;
+	int			j;
+	long int	nbrl;
+	char		res[32];
 
-	if (nb == -2147483648)
-		write(1, "-2147483648", 11);
-	else
+	j = 0;
+	nbrl = nbr;
+	if (nbr < 0)
+		nbrl = -nbrl;
+	while (nbrl >= 10)
 	{
-		flag = 0;
-		if (nb < 0)
-		{
-			flag = 1;
-			nb = nb * -1;
-		}
-		if (flag)
-			ft_write('-');
-		len = ft_len(nb);
-		while (len > 1)
-		{
-			ft_write(nb / len + '0');
-			nb = nb % len;
-			len = len / 10;
-		}
-		ft_write(nb % 10 + '0');
+		res[j++] = (nbrl % 10) + '0';
+		nbrl /= 10;
 	}
-}
-
-int	ft_len(int nb)
-{
-	int	multiplier;
-	int	val;
-
-	val = nb / 10;
-	multiplier = 10;
-	if (val == 0)
-		return (1);
-	else
-	{
-		while (val > 9)
-		{
-			multiplier = multiplier * 10;
-			val = nb / multiplier;
-		}
-	}
-	return (multiplier);
-}
-
-void	ft_write(char c)
-{
-	write(1, &c, 1);
+	res[j] = nbrl + '0';
+	if (nbr < 0)
+		write(1, "-", 1);
+	while (j != -1)
+		write(1, &res[j--], 1);
 }

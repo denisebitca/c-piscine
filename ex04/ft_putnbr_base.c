@@ -6,16 +6,16 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 09:15:19 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/16 10:44:37 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/17 09:11:58 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-unsigned int	ft_checkbase(char *str)
+int	ft_checkbase(char *str)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -27,7 +27,8 @@ unsigned int	ft_checkbase(char *str)
 			if (str[i] == str[j++])
 				return (0);
 		}
-		if (str[i] == ' ' || str[i] == '+' || str[i] == '-')
+		if (str[i] == ' ' || str[i] == '+' || str[i] == '-'
+			|| (str[i] >= 9 && str[i] <= 13))
 			return (0);
 		i++;
 	}
@@ -36,46 +37,28 @@ unsigned int	ft_checkbase(char *str)
 	return (i);
 }
 
-void	ft_write_base(int nbr, char *base)
-{
-	write(1, &base[nbr], 1);
-}
-
-unsigned int	ft_multiplier(unsigned int nbr, unsigned int baselen)
-{
-	int	i;
-
-	i = 1;
-	while (nbr > baselen)
-	{
-		nbr /= baselen;
-		i *= baselen;
-	}
-	return (i);
-}
-
 void	ft_putnbr_base(int nbr, char *base)
 {
-	unsigned int	nbrunsigned;
-	unsigned int	baselen;
-	unsigned int	multiplier;
+	int			i;
+	int			j;
+	long int	nbrl;
+	char		res[32];
 
-	baselen = ft_checkbase(base);
-	if (!baselen)
+	j = 0;
+	i = ft_checkbase(base);
+	if (!i)
 		return ;
+	nbrl = nbr;
 	if (nbr < 0)
+		nbrl = -nbrl;
+	while (nbrl >= i)
 	{
-		nbrunsigned = -nbr;
+		res[j++] = base[nbrl % i];
+		nbrl /= i;
+	}
+	res[j] = base[nbrl];
+	if (nbr < 0)
 		write(1, "-", 1);
-	}
-	else
-		nbrunsigned = nbr;
-	multiplier = ft_multiplier(nbrunsigned, baselen);
-	while (nbrunsigned >= baselen || multiplier != 1)
-	{
-		ft_write_base(nbrunsigned / multiplier, base);
-		nbrunsigned %= multiplier;
-		multiplier /= baselen;
-	}
-	ft_write_base(nbrunsigned % baselen, base);
+	while (j != -1)
+		write(1, &res[j--], 1);
 }

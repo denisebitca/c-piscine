@@ -6,11 +6,9 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:40:03 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/16 17:28:21 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/17 08:57:01 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 unsigned int	ft_checkbase(char *str)
 {
@@ -28,7 +26,7 @@ unsigned int	ft_checkbase(char *str)
 				return (0);
 		}
 		if (str[i] == ' ' || str[i] == '+' || str[i] == '-'
-			|| (str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+			|| (str[i] >= 9 && str[i] <= 13))
 			return (0);
 		i++;
 	}
@@ -109,9 +107,4 @@ int	ft_atoi_base(char *str, char *base)
 		return (0);
 	strlen = ft_set_good_start(&sign, &str, base);
 	return (ft_why(strlen, str, base) * sign);
-}
-
-int	main(void)
-{
-	printf("%i\n", ft_atoi_base("-7F", "0123456789ABCDEF"));
 }
