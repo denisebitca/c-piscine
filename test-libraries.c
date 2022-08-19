@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 10:33:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/13 14:31:13 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/19 10:00:36 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,53 @@ void	printColor(int condition)
 	printf("\033[0m");
 }
 
+int	ft_intncmp(int *s1, int *s2, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_putinttab(int *s1, int *s2, int size)
+{
+	int	i;
+
+	i = 0;
+	printf("expected: ");
+	while (i < size)
+	{
+		if (i == 0)
+			printf("{");
+		if (i > 0)
+			printf(", ");
+		printf("%i", s1[i]);
+		if (i == size - 1)
+			printf("}");
+		i++;
+	}
+	printf(", received: ");
+	i = 0;
+	while (i < size)
+	{
+		if (i == 0)
+			printf("{");
+		if (i > 0)
+			printf(", ");
+		printf("%i", s2[i]);
+		if (i == size - 1)
+			printf("}");
+		i++;
+	}
+	return (0);
+}
+
 void	test_int(int expected, int received, char* description)
 {
 	printf("Test: %s\n", description);
@@ -94,4 +141,12 @@ void	test_str(char *expected, char *received, char *description)
 	printf("Test: %s\n", description);
 	printColor(strcmp(expected, received) == 0);
 	printf("expected: %s, received: %s\n\n", expected, received);
+}
+
+void	test_int_tab(int *expected, int *received, int size, char *description)
+{
+	printf("Test: %s\n", description);
+	printColor(ft_intncmp(expected, received, size) == 0);
+	ft_putinttab(expected, received, size);
+	printf("\n\n");
 }
