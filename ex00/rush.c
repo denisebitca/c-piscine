@@ -6,11 +6,13 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:47:09 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/20 16:27:57 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 11:30:02 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	*ft_split_rush_str(char *str);
+#include <stdlib.h>
+#include <unistd.h>
+#include "rush.h"
 
 int	ft_process_rush_tab(int *tab)
 {
@@ -39,8 +41,31 @@ int	ft_process_rush_tab(int *tab)
 	return (1);
 }
 
+void	ft_print_4x4_tab(int **tab)
+{
+	int		i;
+	int		j;
+	char	c;
+
+	i = -1;
+	while (++i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			c = (tab[i][j++] + '0');
+			write(1, &c, 1);
+			write(1, "\t", 1);
+		}
+		write(1, "\n", 1);
+	}
+}
+
 void	rush(int **exterior, int **interior)
 {
+	ft_print_4x4_tab(exterior);
+	write(1, "\n", 1);
+	ft_print_4x4_tab(interior);
 }
 
 void	ft_populate(int **exterior, int **interior, int *tab)
@@ -70,27 +95,29 @@ void	ft_populate(int **exterior, int **interior, int *tab)
 
 int	main(int ac, char **av)
 {
-	int	**exterior[4];
-	int	**interior[4];
-	int	i;
-	int	*tab;
-	int	pos;
+	int	*exterior[4];
+	int	*interior[4];
+	int	tab[16];
 
-	i = 0;
 	if (ac == 2)
 	{
-		tab = ft_split_rush_str(av[1]);
-		if (tab[0] == -1)
-			write(1, "Error\n", 1);
-		else
+		ft_split_rush_str(av[1], tab);
+		if (tab[0] != -1)
 		{
 			if (ft_process_rush_tab(tab))
+			{
 				ft_populate(exterior, interior, tab);
+				ac = 0;
+				while (ac < 4)
+				{
+					free(exterior[ac]);
+					free(interior[ac++]);
+				}	
+			}
 			else
-				write(1, "Error\n", 1);
+				write(1, "Error\n", 6);
+			return (0);
 		}
 	}
-	else
-		write(1, "Error\n", 6);
-	return (0);
+	write(1, "Error\n", 6);
 }

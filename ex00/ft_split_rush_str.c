@@ -6,13 +6,13 @@
 /*   By: aben-rom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 18:20:45 by aben-rom          #+#    #+#             */
-/*   Updated: 2022/08/20 21:24:50 by aben-rom         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:20:10 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include "rush.h"
 
 int	size(char *str)
 {
@@ -33,38 +33,32 @@ int	ft_check_char(char c)
 	return (0);
 }
 
-void	adam()
+int	ft_check_split(int *j, int i, char *str, int *tab)
 {
-	if (i == 0 || ft_check_char(str[i - 1]) == 1)
+	str = (char *) str;
+	if (ft_check_char(str[i]) == 2)
 	{
-		tab[j++] = ((int)(str[i] - '0'));
-		continue ;
+		if (i == 0 || ft_check_char(str[i - 1]) == 1)
+		{
+			tab[*j] = ((int)(str[i] - '0'));
+			*j += 1;
+			return (1);
+		}
 	}
-	else
+	else if (ft_check_char(str[i]) == 1)
 	{
-		tab[0] = -1;
-		return ;
+		if (i > 0 || ft_check_char(str[i - 1]) == 2)
+			return (1);
 	}
-}
-
-void	adam2()
-{
-	if (i == 0 || ft_check_char(str[i - 1]) == 1)
-	{
-		tab[j++] = ((int)(str[i] - '0'));
-		continue ;
-	}
-	else
-	{
-		tab[0] = -1;
-		return ;
-	}
+	tab[0] = -1;
+	return (0);
 }
 
 void	ft_split_rush_str(char *str, int *tab)
 {
 	int	i;
 	int	j;
+	int	res;
 
 	i = -1;
 	j = 0;
@@ -74,36 +68,11 @@ void	ft_split_rush_str(char *str, int *tab)
 	{
 		while (++i < 31)
 		{
-			if (ft_check_char(str[i]) == 2)
-			{
-				adam();
-			}
-			else if (ft_check_char(str[i]) == 1)
-			{
-				adam2();
-			}
+			res = ft_check_split(&j, i, str, tab);
+			if (res)
+				continue ;
 			else
-			{
-				tab[0] = -1;
 				return ;
-			}
 		}
 	}
-}
-
-int	main(int ac, char **av)
-{
-	int	*tab;
-	int	i;
-
-	tab = malloc(sizeof(int) * 16);
-	i = 0;
-	if (ac == 2)
-	{
-		ft_split_rush_str(av[1], tab);
-		while (i < 16)
-			printf("%i, ", tab[i++]);
-		write(1, "\n", 1);
-	}
-	free(tab);
 }
