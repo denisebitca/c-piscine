@@ -6,13 +6,15 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:54:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/21 11:20:20 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 12:03:51 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUSH_H
 # define RUSH_H
 
+int						validation(int next, int ***pain, int r, int c);
+int						backtrack(int **i, int **e, int r, int c);
 int						size(char *str);
 int						ft_check_char(char c);
 int						ft_check_split(int *j, int i, char *str, int *tab);
