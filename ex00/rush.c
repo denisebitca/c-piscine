@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:47:09 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/21 14:25:38 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 18:34:33 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ft_print_4x4_tab(int **tab)
 		{
 			c = (tab[i][j++] + '0');
 			write(1, &c, 1);
-			write(1, "\t", 1);
+			if (j != 4)
+				write(1, " ", 1);
 		}
 		write(1, "\n", 1);
 	}
@@ -63,8 +64,7 @@ void	ft_print_4x4_tab(int **tab)
 
 void	rush(int **exterior, int **interior)
 {
-	ft_print_4x4_tab(exterior);
-	write(1, "\n", 1);
+	presolve(interior, exterior);
 	ft_print_4x4_tab(interior);
 }
 

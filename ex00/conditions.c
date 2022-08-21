@@ -6,9 +6,19 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 15:24:44 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/21 16:17:33 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 18:22:52 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "rush.h"
+
+void	presolve(int **i, int **e)
+{
+	presolve_up(i, e);
+	presolve_down(i, e);
+	presolve_right(i, e);
+	presolve_left(i, e);
+}
 
 int	verif_left_line(int *tab, int lcon)
 {
