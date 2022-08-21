@@ -6,13 +6,17 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 09:54:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/21 12:03:51 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 16:21:34 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUSH_H
 # define RUSH_H
 
+int						verif_left_line(int *tab, int lcon);
+int						verif_right_line(int *tab, int rcon);
+int						verif_left_line(int **tab, int pos, int tcon);
+int						verif_left_line(int **tab, int pos, int bcon);
 int						validation(int next, int ***pain, int r, int c);
 int						backtrack(int **i, int **e, int r, int c);
 int						size(char *str);
