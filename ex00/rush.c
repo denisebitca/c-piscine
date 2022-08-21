@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 11:47:09 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/21 11:30:02 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 14:25:38 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main(int ac, char **av)
 				{
 					free(exterior[ac]);
 					free(interior[ac++]);
-				}	
+				}
 			}
 			else
 				write(1, "Error\n", 6);

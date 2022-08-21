@@ -6,7 +6,7 @@
 /*   By: aben-rom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 18:20:45 by aben-rom          #+#    #+#             */
-/*   Updated: 2022/08/21 11:20:10 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/21 15:23:08 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_check_split(int *j, int i, char *str, int *tab)
 	}
 	else if (ft_check_char(str[i]) == 1)
 	{
-		if (i > 0 || ft_check_char(str[i - 1]) == 2)
+		if (i > 0 && ft_check_char(str[i - 1]) == 2)
 			return (1);
 	}
 	tab[0] = -1;
