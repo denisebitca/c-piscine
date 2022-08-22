@@ -6,13 +6,13 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 10:07:20 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/22 10:44:32 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:41:54 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char    *ft_convert_base(char *str, char *base_from, char *base_to);
+char    *ft_convert_base(char *nbr, char *base_from, char *base_to);
 void	test_str(char *expected, char *received, char *description);
 
 int	main(void)
