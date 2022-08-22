@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 10:58:54 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/18 11:11:19 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/22 14:27:13 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@ int	ft_iterative_factorial(int nb)
 	int	i;
 
 	i = 1;
-	while (nb > 0)
-		i *= nb--;
-	if (nb < 0)
+	if (nb < 0 || nb >= 13)
 		i = 0;
+	while (nb > 0 && nb < 13)
+		i *= nb--;
 	return (i);
 }
