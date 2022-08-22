@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 09:15:19 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/22 09:45:04 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/22 10:06:03 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,22 @@ int	ft_nbrlength(long int nbrl, int nbr, int i)
 		nbrl /= i;
 	}
 	if (nbr < 0)
-		return (j+2);
-	return (j+1);
+		return (j + 2);
+	return (j + 1);
+}
+
+void	ft_rev_str(char *str, int size)
+{
+	char	temp;
+	int		i;
+
+	i = 0;
+	while (i < size)
+	{
+		temp = str[i];
+		str[i++] = str[size - 1];
+		str[size-- - 1] = temp;
+	}
 }
 
 char	*ft_putnbr_base(int nbr, char *base)
@@ -41,15 +55,16 @@ char	*ft_putnbr_base(int nbr, char *base)
 	nbrl = nbr;
 	if (nbr < 0)
 		nbrl = -nbrl;
-	res = malloc(sizeof(char) * ft_nbrlength(nbrl, nbr, i));
+	res = malloc(sizeof(char) * (ft_nbrlength(nbrl, nbr, i)));
 	while (nbrl >= i)
 	{
 		res[j++] = base[nbrl % i];
 		nbrl /= i;
 	}
-	res[j] = base[nbrl];
+	res[j++] = base[nbrl];
 	if (nbr < 0)
-		write(1, "-", 1);
-	while (j != -1)
-		write(1, &res[j--], 1);
+		res[j++] = '-';
+	res[j] = '\0';
+	ft_rev_str(res, j);
+	return (res);
 }
