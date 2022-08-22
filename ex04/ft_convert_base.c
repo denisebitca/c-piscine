@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 11:40:03 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/22 10:31:52 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:41:21 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	ft_why(int strlen, char *str, char *base)
 	return (final);
 }
 
-char	*ft_convert_base(char *str, char *base_from, char *base_to)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int	sign;
 	int	strlen;
@@ -107,6 +107,6 @@ char	*ft_convert_base(char *str, char *base_from, char *base_to)
 	sign = 1;
 	if (!ft_checkbase(base_from) || !ft_checkbase(base_to))
 		return (0);
-	strlen = ft_set_good_start(&sign, &str, base_from);
-	return (ft_putnbr_base((ft_why(strlen, str, base_from) * sign), base_to));
+	strlen = ft_set_good_start(&sign, &nbr, base_from);
+	return (ft_putnbr_base((ft_why(strlen, nbr, base_from) * sign), base_to));
 }
