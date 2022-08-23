@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 19:39:20 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/23 11:47:53 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/23 14:24:15 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_show_tab(struct s_stock_str *par)
 	i = -1;
 	while (par[++i].str != 0)
 	{
-		ft_putstr(par[i].str);
+		write(1, par[i].str, par[i].size);
 		write(1, "\n", 1);
 		ft_putnbr(par[i].size);
 		write(1, "\n", 1);
