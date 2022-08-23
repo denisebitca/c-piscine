@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:07:24 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/23 14:22:55 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/23 17:41:16 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	while (++i < ac)
 	{
 		j = 0;
-		while (av[i][++j])
+		while (av[i][j++])
 			;
-		ret[i] = (t_stock_str){j, av[i], ft_strdup(av[i])};
+		ret[i] = (t_stock_str){j - 1, av[i], ft_strdup(av[i])};
 	}
 	ret[i] = (t_stock_str){0, 0, 0};
 	return (ret);
