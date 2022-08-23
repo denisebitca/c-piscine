@@ -5,21 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 14:46:25 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/22 15:53:54 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/23 09:35:38 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/23 14:25:38 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include "ft_stock_str.h"
+#include "../08/ex05/ft_show_tab.c"
+#include <stdlib.h>
 
-int	ft_fibonacci(int index);
-int	test_int(int expected, int received, char *description);
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
+void	ft_show_tab(struct s_stock_str *par);
 
 int	main(void)
 {
-	test_int(-1, ft_fibonacci(INT_MIN), "ex04 - INT_MIN");
-	test_int(0, ft_fibonacci(0), "ex04 - 0");
-	test_int(1, ft_fibonacci(1), "ex04 - 1");
-	//test_int(-1, ft_fibonacci(INT_MAX), "ex04 - INT_MAX");
-	test_int(9227465, ft_fibonacci(35), "ex04 - 35");
+	t_stock_str *test;
+	char *av[] = {"string1", "string2", "str3", "str4"};
+	
+	test = ft_strs_to_tab(4, av);
+	test[1].copy = "zero";
+	ft_show_tab(test);
+	free(test);
 }

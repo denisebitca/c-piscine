@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04.c                                               :+:      :+:    :+:   */
+/*   02.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 14:46:25 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/22 15:53:54 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/23 11:02:10 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/23 11:03:59 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include "../08/ex02/ft_abs.h"
 
-int	ft_fibonacci(int index);
-int	test_int(int expected, int received, char *description);
+void	test_int(int expected, int received, char *description);
 
 int	main(void)
 {
-	test_int(-1, ft_fibonacci(INT_MIN), "ex04 - INT_MIN");
-	test_int(0, ft_fibonacci(0), "ex04 - 0");
-	test_int(1, ft_fibonacci(1), "ex04 - 1");
-	//test_int(-1, ft_fibonacci(INT_MAX), "ex04 - INT_MAX");
-	test_int(9227465, ft_fibonacci(35), "ex04 - 35");
+	test_int(5, ABS(-5), "absolute value");
 }

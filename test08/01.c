@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04.c                                               :+:      :+:    :+:   */
+/*   01.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 14:46:25 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/22 15:53:54 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/23 10:54:23 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/23 11:00:01 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include "../08/ex01/ft_boolean.h"
+#include <unistd.h>
 
-int	ft_fibonacci(int index);
-int	test_int(int expected, int received, char *description);
-
-int	main(void)
+void	ft_putstr(char *str)
 {
-	test_int(-1, ft_fibonacci(INT_MIN), "ex04 - INT_MIN");
-	test_int(0, ft_fibonacci(0), "ex04 - 0");
-	test_int(1, ft_fibonacci(1), "ex04 - 1");
-	//test_int(-1, ft_fibonacci(INT_MAX), "ex04 - INT_MAX");
-	test_int(9227465, ft_fibonacci(35), "ex04 - 35");
+	while (*str)
+			write(1, str++, 1);
+}
+
+t_bool	ft_is_even(int nbr)
+{
+	return ((EVEN(nbr)) ? TRUE : FALSE);
+}
+
+int	main(int argc, char **argv)
+{
+		(void)argv;
+		if (ft_is_even(argc - 1) == TRUE)
+				ft_putstr(EVEN_MSG);
+		else
+				ft_putstr(ODD_MSG);
+		return (SUCCESS);
 }
