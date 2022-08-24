@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04.c                                               :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 09:35:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/23 17:40:14 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/11 15:28:20 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/11 20:22:06 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stock_str.h"
-#include "../08/ex05/ft_show_tab.c"
-#include <stdlib.h>
+#include <unistd.h>
 
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
-void	ft_show_tab(struct s_stock_str *par);
+int	ft_strlen(char *str);
 
-int	main(void)
+void	ft_putstr(char *str)
 {
-	t_stock_str *test;
-	char *av[] = {"string1", "string2", "str3", "str4", ""};
-	
-	test = ft_strs_to_tab(5, av);
-	test[1].copy = "zero";
-	ft_show_tab(test);
-	free(test);
+	write(1, str, ft_strlen(str));
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

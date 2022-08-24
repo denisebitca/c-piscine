@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04.c                                               :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 09:35:38 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/23 17:40:14 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/22 15:04:13 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/22 15:05:30 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stock_str.h"
-#include "../08/ex05/ft_show_tab.c"
-#include <stdlib.h>
+#ifndef FT_H
+# define FT_H
 
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
-void	ft_show_tab(struct s_stock_str *par);
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
-int	main(void)
-{
-	t_stock_str *test;
-	char *av[] = {"string1", "string2", "str3", "str4", ""};
-	
-	test = ft_strs_to_tab(5, av);
-	test[1].copy = "zero";
-	ft_show_tab(test);
-	free(test);
-}
+#endif
