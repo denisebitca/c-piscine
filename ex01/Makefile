@@ -1,4 +1,5 @@
 C	= gcc
+CFLAGS	=  -Wall -Wextra -Werror
 INCLUDEDIR		= ./includes
 INCLUDEFILES	= ft.h
 SRCSDIR	= ./srcs
@@ -11,20 +12,21 @@ SRCS		= $(SRCSFILES:%.c=$(SRCSDIR)/%.c)
 LIBNAME	= libft.a
 OBJS	= ${SRCS:.c=.o}
 INCLUDEOBJS = ${INCLUDES:.h=.h.gch}
-
-all: ${LIBNAME}
+RM	= rm -f
 
 ${LIBNAME}:
-	$C -Wall -Wextra -error -c ${INCLUDES} ${SRCS}
-	mv *.o ${SRCSDIR}
-	ar rc ${LIBNAME} ${OBJS}
-	ranlib ${LIBNAME}
+		$C ${CFLAGS} -c ${INCLUDES} ${SRCS}
+		mv *.o ${SRCSDIR}
+		ar rc ${LIBNAME} ${OBJS}
+		ranlib ${LIBNAME}
+
+all:	${LIBNAME}
 
 clean:
-	rm ${INCLUDEOBJS}
-	rm ${OBJS}
+		${RM} ${INCLUDEOBJS}
+		${RM} ${OBJS}
 
 fclean:	clean
-	rm ${LIBNAME}
+		${RM} ${LIBNAME}
 
-re: fclean all
+re:		fclean all
