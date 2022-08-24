@@ -6,11 +6,12 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:06:09 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/23 17:24:55 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/24 09:53:58 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
 # define TRUE 1
 # define FALSE 0
@@ -18,7 +19,6 @@
 # define ODD_MSG "I have an odd number of arguments.\n"
 # define SUCCESS 0
 # define EVEN(x) (!(x % 2))
-# define FT_BOOLEAN_H
 
 typedef int	t_bool;
 
