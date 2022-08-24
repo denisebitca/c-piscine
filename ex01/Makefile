@@ -1,32 +1,24 @@
-C	= gcc
-CFLAGS	=  -Wall -Wextra -Werror
-INCLUDEDIR		= ./includes
-INCLUDEFILES	= ft.h
-SRCSDIR	= ./srcs
-SRCSFILES	= ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
-
-# Take all substrings seperated by a space that follow the pattern *.h/*.c 
-# and append their directory to the start of the respective substrings
-INCLUDES	= $(INCLUDEFILES:%.h=$(INCLUDEDIR)/%.h)
-SRCS		= $(SRCSFILES:%.c=$(SRCSDIR)/%.c)
-LIBNAME	= libft.a
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+SRCS	= srcs/ft_strlen.c srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_swap.c
 OBJS	= ${SRCS:.c=.o}
-INCLUDEOBJS = ${INCLUDES:.h=.h.gch}
-RM	= rm -f
+NAME	= libft.a
 
-${LIBNAME}:
-		$C ${CFLAGS} -c ${INCLUDES} ${SRCS}
-		mv *.o ${SRCSDIR}
-		ar rc ${LIBNAME} ${OBJS}
-		ranlib ${LIBNAME}
+all: ${NAME}
 
-all:	${LIBNAME}
+.c.o:
+	$(CC) $(CFLAGS) -c -Iincludes $< -o $@
+
+${NAME}: ${OBJS}
+	ar rc ${NAME} ${OBJS}
+	ranlib ${NAME}
 
 clean:
-		${RM} ${INCLUDEOBJS}
-		${RM} ${OBJS}
+	rm -f ${OBJS}
 
 fclean:	clean
-		${RM} ${LIBNAME}
+	rm -f ${NAME}
 
-re:		fclean all
+re:	fclean all
+
+.PHONY:	all clean fclean re
