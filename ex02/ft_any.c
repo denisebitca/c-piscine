@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 20:25:31 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/24 21:22:34 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/25 16:21:55 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_any(char **tab, int (*f)(char*))
 
 	ok = 0;
 	i = -1;
-	while (tab[++i])
-		if (!(f(tab[i])))
+	while (tab[++i] != 0)
+		if (f(tab[i]) == 0)
 			ok++;
-	return (!(ok == (i - 1)));
+	return (ok != i);
 }

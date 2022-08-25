@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 20:21:48 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/24 21:22:08 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:25:21 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	*ft_map(int *tab, int length, int (*f)(int))
 
 	i = -1;
 	ret = malloc(sizeof(int) * length);
-	while (++i < tab)
+	if (ret == NULL)
+		return (NULL);
+	while (++i < length)
 		ret[i] = f(tab[i]);
 	return (ret);
 }

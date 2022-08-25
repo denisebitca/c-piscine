@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 20:19:58 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/24 21:22:22 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:15:57 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ void	ft_foreach(int *tab, int length, void (*f)(int))
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	while (i++ < length)
 		f(tab[i]);
 }
