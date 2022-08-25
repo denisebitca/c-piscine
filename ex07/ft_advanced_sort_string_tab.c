@@ -6,11 +6,11 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 08:45:34 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/25 08:53:09 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/25 19:31:12 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	**ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char*))
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char*))
 {
 	int		i;
 	int		j;

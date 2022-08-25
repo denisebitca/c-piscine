@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 08:45:34 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/25 08:51:08 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/25 19:31:49 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void	**ft_sort_string_tab(char **tab)
+void	ft_sort_string_tab(char **tab)
 {
 	int		i;
 	int		j;
