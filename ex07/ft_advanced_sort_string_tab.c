@@ -6,30 +6,31 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 08:45:34 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/25 19:31:12 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/26 12:01:20 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char*))
 {
-	int		i;
 	int		j;
+	int		size;
 	char	*t;
 
-	i = 0;
-	while (tab[i] != 0)
+	size = 0;
+	while (tab[++size] != 0)
+		;
+	while (size > 1)
 	{
-		j = i + 1;
-		while (tab[j] != 0)
+		j = -1;
+		while (++j < size - 1)
 		{
-			if (cmp(tab[i], tab[j]) > 0)
+			if (cmp(tab[j], tab[j + 1]) > 0)
 			{
-				t = tab[i];
-				tab[i] = tab[j];
-				tab[j] = t;
+				t = tab[j];
+				tab[j] = tab[j + 1];
+				tab[j + 1] = t;
 			}
-			j++;
 		}
-		i++;
+		size--;
 	}
 }
