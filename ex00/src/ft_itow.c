@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 20:06:17 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 18:13:16 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/28 19:03:11 by dopenas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_check_itow(unsigned int nb, t_list *list)
 	return (1);
 }
 
-void	ft_itow_helper(unsigned int val, unsigned int m, t_list *list)
+void	ft_itow_helper(unsigned int val, unsigned int n, unsigned int m, t_list *list)
 {
 	if (val / 100 != 0)
 	{
@@ -74,6 +74,8 @@ void	ft_itow_helper(unsigned int val, unsigned int m, t_list *list)
 	}
 	if (val % 100 >= 20)
 	{
+		if (val / 100 != 0)
+			ft_putstr(" ");
 		ft_putstr(ft_find_elem_parse(list, (val % 100) - (val % 10)));
 		if (val % 10 > 0)
 		{
@@ -83,12 +85,16 @@ void	ft_itow_helper(unsigned int val, unsigned int m, t_list *list)
 	}
 	else if (val % 100 > 0)
 	{
+		if (val / 100 != 0)	
+			ft_putstr(" ");
 		ft_putstr(ft_find_elem_parse(list, val % 100));
 	}
 	if (m != 1)
 	{
 		ft_putstr(" ");
 		ft_putstr(ft_find_elem_parse(list, m));
+		if (n >= 1)
+			ft_putstr(" ");
 	}
 }
 
@@ -110,7 +116,7 @@ void ft_itow(unsigned int nb, t_list *list)
 		if (val)
 		{
 			nb = nb % magnitude;
-			ft_itow_helper(val, magnitude, list);
+			ft_itow_helper(val, nb, magnitude, list);
 		}
 		magnitude /= 1000;
 	}
