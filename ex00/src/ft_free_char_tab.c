@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_free_char_tab.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 13:57:30 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 18:05:43 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/28 18:07:11 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/28 18:24:24 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include <stdlib.h>
 
-char	**ft_split(char *str, char *charset);
-long int	ft_atoi(char *nbr);
-char	*ft_truncate(char *str);
-char	*ft_strdup(char *str);
-int		ft_strslen(char **strs);
-void	ft_putstr(char *str);
-void	ft_free_char_tab(char **strs);
+void	ft_free_char_tab(char **strs)
+{
+	int	i;
 
-#endif
+	i = -1;
+	while (strs[++i] != 0)
+		free(strs[i]);
+	free(strs);
+}

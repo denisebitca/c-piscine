@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:02:11 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 16:22:31 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/28 18:04:29 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,15 @@ char	*ft_find_elem_parse(t_list *list, int magnitude)
 	return (NULL);
 }
 
-t_list *ft_elem_get_last(t_list **begin_list)
-{
-	t_list	*elem;
-
-	if ((*begin_list) == NULL)
-		return (NULL);
-	elem = (*begin_list);
-	while (elem->next)
-		elem = elem->next;
-	return (elem);
-}
-
-void	ft_free_whole_list(t_list **list)
+void	ft_free_whole_list(t_list *list)
 {
 	t_list *freeable;
 
-	freeable = ft_elem_get_last(list);
-	while(freeable != NULL)
+	while(list != NULL)
 	{
+		free(list->words);
+		freeable = list;
+		list = list->next;
 		free(freeable);
-		freeable = ft_elem_get_last(list);
 	}
 }

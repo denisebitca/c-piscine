@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 07:37:24 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 16:51:49 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/28 18:24:11 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,27 @@ int	ft_line_parse(char *line, t_list **list)
 	firstsplit = ft_split(line, ":");
 	if (ft_strslen(firstsplit) != 2)
 	{
-		free(firstsplit);
+		ft_free_char_tab(firstsplit);
 		return (0);
 	}
 	magnitude = ft_atoi(firstsplit[0]);
 	if (magnitude < 0)
 	{
-		free(firstsplit);
+		ft_free_char_tab(firstsplit);
 		return (-1);
 	}
 	words = ft_strdup(firstsplit[1]);
-	free(firstsplit);
 	if (words == NULL)
 		return (0);
 	if (ft_find_elem_parse(*list, magnitude))
 	{
 		free(words);
+		ft_free_char_tab(firstsplit);
 		return (0);
 	}
 	ft_push_elem_parse_last(list, magnitude, ft_truncate(words));
 	free(words);
+	ft_free_char_tab(firstsplit);
 	return (1);
 }
 
@@ -74,7 +75,7 @@ char *ft_realloc_buffer(char *ptr, int size)
 		return (NULL);
 	}
 	while (ptr[++i])
-		ptr[i] = newptr[i];
+		newptr[i] = ptr[i];
 	newptr[++i] = '\0';
 	free(ptr);
 	return (newptr);
@@ -85,7 +86,8 @@ int	rush_parser(char *filename, t_list **list, int res)
 	int		fd;
 	int 	size;
 	char 	*buffer;
-	char	b[1];
+	char	*temp;
+	char	b;
 	int		step;
 
 	fd = open(filename, O_RDONLY);
@@ -95,12 +97,12 @@ int	rush_parser(char *filename, t_list **list, int res)
 	buffer = malloc(sizeof(char) * size);
 	if (buffer == NULL)
 		return (0);
+	buffer[0] = ' ';
 	buffer[1] = '\0';
-	step = read(fd, b, 1);
+	step = read(fd, &b, 1);
 	while (step > 0)
 	{
-		buffer[size - 2] = b[0];
-		if (b[0] == '\n' || b[0] == '\0')
+		if (b == '\n' || b == '\0')
 		{
 			res = ft_line_parse(buffer, list);
 			if (!res)
@@ -116,10 +118,14 @@ int	rush_parser(char *filename, t_list **list, int res)
 			buffer[1] = '\0';
 		}
 		else
-			buffer = ft_realloc_buffer(buffer, ++size);
+		{
+			buffer[size - 2] = b;
+			temp = ft_realloc_buffer(buffer, ++size);
+			buffer = temp;
+		}
 		if (buffer == NULL)
 			return (0);
-		step = read(fd, b, 1);
+		step = read(fd, &b, 1);
 	}
 	free(buffer);
 	if (step < 0)

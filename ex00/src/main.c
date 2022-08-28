@@ -6,7 +6,7 @@
 /*   By: dopenas- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:17:57 by dopenas-          #+#    #+#             */
-/*   Updated: 2022/08/28 16:42:29 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/28 18:11:29 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,25 @@ int	main	(int ac, char **av)
 	ac = rush_parser(dict, &list, i);
 	if(ac <= 0)
 	{
-		ft_free_whole_list(&list);
+		ft_free_whole_list(list);
 		write(1, "Dict Error\n", 11);
 		return (1);
 	}
-	if (ft_atoi(nbr) > 0)
+	if (ft_atoi(nbr) >= 0)
 		num = (unsigned int) ft_atoi(nbr);
 	else
 	{
-		ft_free_whole_list(&list);
+		ft_free_whole_list(list);
 		write(1, "Error\n", 6);
 		return (1);
 	}
 	if(!ft_check_itow(num, list))
 	{
-		ft_free_whole_list(&list);
+		ft_free_whole_list(list);
 		write(1, "Dict Error\n", 11);
 		return (1);
 	}
 	ft_itow(num, list);
+	ft_free_whole_list(list);
 	return (0);
 }
