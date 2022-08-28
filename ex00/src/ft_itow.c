@@ -6,18 +6,12 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 20:06:17 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/27 23:02:03 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/28 09:31:46 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "num.h"
-#include "list.h"
+#include "itow.h"
 #include <stdlib.h>
-
-char	*ft_find_elem_parse(t_list *list, int magnitude)
-{
-	return (NULL);
-}
 
 int	ft_check(unsigned int val, unsigned int m, t_list *list)
 {
@@ -55,7 +49,7 @@ int	ft_check_itow(unsigned int nb, t_list *list)
 		if (val)
 		{
 			nb = nb % magnitude;
-			if (!ft_check_itow(val, magnitude, list))
+			if (!ft_check(val, magnitude, list))
 				return (0);			
 		}
 		magnitude /= 1000;
@@ -86,7 +80,7 @@ void	ft_itow_helper(unsigned int val, unsigned int m, t_list *list)
 		ft_find_elem_parse(list, m);
 }
 
-int	ft_itow(unsigned int nb, t_list *list)
+void ft_itow(unsigned int nb, t_list *list)
 {
 	unsigned int	val;
 	unsigned int	magnitude;
@@ -103,5 +97,4 @@ int	ft_itow(unsigned int nb, t_list *list)
 		}
 		magnitude /= 1000;
 	}
-	return (1);
 }

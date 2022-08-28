@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   itow.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 20:07:57 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/27 22:35:43 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/27 23:22:06 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/28 09:31:14 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef ITOW_H
+# define ITOW_H
 
-typedef struct	s_list
-{
-	int		magnitude;
-	char	*words;
-	t_list	*next;
-}				t_list;
+# include "list.h"
 
-t_list	*ft_create_elem_parse(int magnitude, char *words);
-void	ft_push_elem_parse_last(t_list **begin_list, int magnitude, char *words);
-char	*ft_find_elem_parse(t_list *list, int magnitude);
+int	ft_check(unsigned int val, unsigned int m, t_list *list);
+int	ft_check_itow(unsigned int nb, t_list *list);
+void	ft_itow_helper(unsigned int val, unsigned int m, t_list *list);
+void	ft_itow(unsigned int nb, t_list *list);
 
 #endif
