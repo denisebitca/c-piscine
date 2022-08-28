@@ -6,11 +6,12 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 20:06:17 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 09:31:46 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/28 16:48:01 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "itow.h"
+#include "libft.h"
 #include <stdlib.h>
 
 int	ft_check(unsigned int val, unsigned int m, t_list *list)
@@ -31,7 +32,7 @@ int	ft_check(unsigned int val, unsigned int m, t_list *list)
 	}
 	else if (val % 100 > 0 && !ft_find_elem_parse(list, val % 100))
 			return (0);
-	if (m != 1 && !ft_find_elem_parse(list, magnitude))
+	if (m != 1 && !ft_find_elem_parse(list, m))
 			return (0);
 	return (1);
 }

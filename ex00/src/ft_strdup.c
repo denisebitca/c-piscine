@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 20:07:57 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 16:17:44 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/19 08:37:35 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/19 09:06:42 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#include <stdlib.h>
 
-typedef struct	s_list
+char	*ft_strdup(char *src)
 {
-	int				magnitude;
-	char			*words;
-	struct s_list	*next;
-}				t_list;
+	char	*duplicate;
+	int		srcsize;
+	int		i;
 
-t_list	*ft_create_elem_parse(int magnitude, char *words);
-void	ft_push_elem_parse_last(t_list **begin_list, int magnitude, char *words);
-char	*ft_find_elem_parse(t_list *list, int magnitude);
-void	ft_free_whole_list(t_list **list);
-
-#endif
+	srcsize = 1;
+	i = -1;
+	while (src[((srcsize++)) - 1])
+		;
+	duplicate = malloc(sizeof(char) * srcsize);
+	if (duplicate == NULL)
+		return (NULL);
+	while (src[++i])
+		duplicate[i] = src[i];
+	duplicate[i] = '\0';
+	return (duplicate);
+}

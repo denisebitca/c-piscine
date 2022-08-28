@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 20:07:57 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 16:17:44 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/28 16:29:24 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/28 16:40:01 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef PARSER_H
+# define PARSER_H
 
-typedef struct	s_list
-{
-	int				magnitude;
-	char			*words;
-	struct s_list	*next;
-}				t_list;
+#include "list.h"
 
-t_list	*ft_create_elem_parse(int magnitude, char *words);
-void	ft_push_elem_parse_last(t_list **begin_list, int magnitude, char *words);
-char	*ft_find_elem_parse(t_list *list, int magnitude);
-void	ft_free_whole_list(t_list **list);
+int	rush_parser(char *filename, t_list **list, int res);
 
 #endif

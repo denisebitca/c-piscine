@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 20:07:57 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/28 16:17:44 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/28 13:57:30 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/28 16:52:52 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-typedef struct	s_list
-{
-	int				magnitude;
-	char			*words;
-	struct s_list	*next;
-}				t_list;
-
-t_list	*ft_create_elem_parse(int magnitude, char *words);
-void	ft_push_elem_parse_last(t_list **begin_list, int magnitude, char *words);
-char	*ft_find_elem_parse(t_list *list, int magnitude);
-void	ft_free_whole_list(t_list **list);
+char	**ft_split(char *str, char *charset);
+long int	ft_atoi(char *nbr);
+char	*ft_truncate(char *str);
+char	*ft_strdup(char *str);
+int		ft_strslen(char **strs);
+void	ft_putstr(char *str);
 
 #endif
