@@ -15,7 +15,7 @@
 
 # include "src/map.h"
 
-int	map_parser(const char **contents, t_map *map);
+int	map_parser(const char *contents, t_map *map);
 int	map_printer(t_map *map, t_coords tlcorner, int size);
 
 #endif
