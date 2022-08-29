@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 10:58:02 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 15:10:26 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/29 15:54:34 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "map.h"
 #include "map_handling.h"
 
-int	fill_int_tab(char **lines, t_map *map)
+int	fill_int_tab(const char **lines, t_map *map)
 {
 	int	x;
 	int	y;
 	int	i;
 
 	i = -1;
-	x = map->dimensions->x;
-	y = map->dimensions->y;
+	x = map->dimensions.x;
+	y = map->dimensions.y;
 	map->heat_map = malloc(sizeof(int) * (x + 2) * (y + 2));
 	if (map->heat_map == NULL)
 		return (0);
@@ -32,7 +32,7 @@ int	fill_int_tab(char **lines, t_map *map)
 	return (1);
 }
 
-int	chars_in_map_charset(char *s, t_map *map)
+int	chars_in_map_charset(const char *s, t_map *map)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ int	chars_in_map_charset(char *s, t_map *map)
 	return (1);
 }
 
-int	parse_all_lines(int lnum, char **lines, t_map *map)
+int	parse_all_lines(int lnum, const char **lines, t_map *map)
 {
 	int	i;
 	int	toplsize;
@@ -75,7 +75,7 @@ int	parse_first_line(const char *fline, t_map *map)
 
 	i = 0;
 	len = ft_strlen(fline);
-	if (len < 4)
+	if (len < 4 || len > 13)
 		return (0);
 	if (fline[i] < 0 || fline[i] > 9)
 		return (0);
@@ -83,7 +83,7 @@ int	parse_first_line(const char *fline, t_map *map)
 		i++;
 	if (i != (len - 3))
 		return (0);
-	rlnum = ft_atoin(fline, i);
+	rlnum = atoin(fline, i);
 	if (rlnum < 0)
 		return (0);
 	map->empty = fline[i++];
@@ -100,7 +100,7 @@ int	map_parser(const char *contents, t_map *map)
 	const char	**lines;
 
 	i = 0;
-	lines = ft_split(contents, "\n");
+	lines = (const char **) splitter(contents);
 	lnum = -1;
 	while (lines[++lnum])
 		;
@@ -111,10 +111,10 @@ int	map_parser(const char *contents, t_map *map)
 		return (-1);
 	if (!parse_all_lines(lnum, lines, map))
 		return (-1);
-	if (!fill_int_tab(map))
+	if (!fill_int_tab(lines, map))
 		return (-1);
 	while (lines[++i])
-		free(lines[i]);
+		free((void *) lines[i]);
 	free(lines);
 	return (0);
 }

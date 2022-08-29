@@ -6,17 +6,17 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:54:32 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 15:01:50 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/29 15:48:24 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-void	fill_int_tab_helper(char **lines, int i, int y, t_map *map)
+void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map)
 {
 	int	x;
 
-	while (++i < map->dimensions->x)
+	while (++i < map->dimensions.x)
 		map->heat_map[i] = -1;
 	while (lines[++y])
 	{

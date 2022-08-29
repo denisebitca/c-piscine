@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_handling.h                                     :+:      :+:    :+:   */
+/*   atoin.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 11:41:45 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 15:51:34 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/29 15:32:13 by rbitca            #+#    #+#             */
+/*   Updated: 2022/08/29 15:43:34 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_HANDLING_H
-# define MAP_HANDLING_H
+#include <unistd.h>
+#include <limits.h>
 
-# include "map.h"
+int	atoin(const char *str, int size)
+{
+	long int	i;
+	long int	nb;
 
-int		map_parser(const char *contents, t_map *map);
-int		map_printer(t_map map, t_coords tlcorner, int size, char **char_map);
-void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map);
-char	**splitter(const char *str);
-int		atoin(const char *str, int size);
-
-#endif //MAP_HANDLING_H
+	i = 0;
+	nb = 0;
+	while (i < size)
+		nb = nb * 10 + (str[i++] - '0');
+	if (nb > INT_MAX)
+		return (-1);
+	else
+		return (nb);
+}
