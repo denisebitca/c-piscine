@@ -13,7 +13,7 @@
 #ifndef MAP_HANDLING_H
 # define MAP_HANDLING_H
 
-# include "map.h"
+# include "src/map.h"
 
 int		map_parser(const char *contents, t_map *map);
 int		map_printer(t_map map, t_coords tlcorner, int size, char **char_map);

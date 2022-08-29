@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
-#include "map.h"
+#include "src/libft/libft.h"
+#include "src/map.h"
 #include "map_handling.h"
 
 int	fill_int_tab(const char **lines, t_map *map)

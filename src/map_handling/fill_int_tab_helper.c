@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "src/map.h"
 
 void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map)
 {

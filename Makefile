@@ -3,6 +3,10 @@ SRCS		=	src/file_read/file_to_string.c \
 				src/libft/ft_str_put.c \
 				src/libft/ft_str_copies.c \
 				src/libft/ft_str_inspect.c \
+				src/map_handling/atoin.c \
+				src/map_handling/fill_int_tab_helper.c \
+				src/map_handling/map_parser.c \
+				src/map_handling/splitter.c \
 
 OBJS		= ${SRCS:.c=.o}
 
