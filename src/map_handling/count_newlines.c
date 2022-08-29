@@ -18,7 +18,10 @@ int	count_newlines(const char *str)
 	i = 0;
 	res = 0;
 	while (str[i])
+	{
 		if (str[i] == '\n')
 			res++;
+		i++;
+	}
 	return (res);
 }
