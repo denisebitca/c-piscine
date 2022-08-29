@@ -52,7 +52,7 @@ int	read_whole_file(
 	int		i;
 
 	len = 0;
-	if (apply_to_file(fd, &count_len, &len))
+	if (apply_to_file(fd, &count_len, &len) < 0)
 		return (-1);
 	fd = reset_file(fd, filename);
 	if (fd < 0)
@@ -63,7 +63,7 @@ int	read_whole_file(
 	i = -1;
 	while (++i < len + 1)
 		(*file_contents)[i] = '\0';
-	if (apply_to_file(fd, &cat_bytes, *file_contents))
+	if (apply_to_file(fd, &cat_bytes, *file_contents) < 0)
 	{
 		free(*file_contents);
 		return (-1);
