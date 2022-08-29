@@ -6,7 +6,9 @@ SRCS		=	src/file_read/file_to_string.c \
 				src/map_handling/atoin.c \
 				src/map_handling/fill_int_tab_helper.c \
 				src/map_handling/map_parser.c \
+				src/map_handling/map_printer.c \
 				src/map_handling/splitter.c \
+				src/find_square/find_square.c
 
 OBJS		= ${SRCS:.c=.o}
 
