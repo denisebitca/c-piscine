@@ -1,6 +1,8 @@
 SRCS		=	src/file_read/file_to_string.c \
 				src/file_read/file_exploration.c \
-				src/libft/ft_str_copies.c
+				src/libft/ft_str_put.c \
+				src/libft/ft_str_copies.c \
+				src/libft/ft_str_inspect.c \
 
 OBJS		= ${SRCS:.c=.o}
 

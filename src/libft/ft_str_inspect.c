@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_str_inspect.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aronez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 11:19:22 by aronez            #+#    #+#             */
-/*   Updated: 2022/08/29 11:19:22 by aronez           ###   ########.fr       */
+/*   Created: 2022/08/29 14:07:42 by aronez            #+#    #+#             */
+/*   Updated: 2022/08/29 14:07:42 by aronez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+int	ft_strlen(const char *str)
+{
+	int	i;
 
-# include <unistd.h>
-
-int		ft_strlen(const char *str);
-
-char	*ft_strncat(char *dest, const char *src, int n);
-
-ssize_t	ft_str_write(const char *str);
-
-#endif //LIBFT_H
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
