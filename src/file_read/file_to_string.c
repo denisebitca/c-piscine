@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "src/ft_str/ft_str.h"
+#include "src/libft/libft.h"
 
 #define BUF_SIZE 16384
 
