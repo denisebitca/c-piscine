@@ -21,7 +21,7 @@ int	read_whole_file(
 		int (*reset_file)(int, const char *),
 		char **file_contents
 		);
-int	reopen_simple_file(int fd, const char *filename);
+int	reopen_file(int fd, const char *filename);
 int	reopen_standard_input(int fd, const char *dummy_filename);
 
 #endif //FILE_READ_H

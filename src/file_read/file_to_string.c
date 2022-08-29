@@ -24,7 +24,7 @@ int		apply_to_file(
 			void *data
 			);
 
-int	reopen_simple_file(int fd, const char *filename)
+int	reopen_file(int fd, const char *filename)
 {
 	if (close(fd) < 0)
 		return (-1);
