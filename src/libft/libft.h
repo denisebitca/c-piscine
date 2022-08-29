@@ -19,6 +19,8 @@ int		ft_strlen(const char *str);
 
 char	*ft_strncat(char *dest, const char *src, int n);
 
+int		ft_str_dup(const char *src, char **dest);
+
 ssize_t	ft_str_write(const char *str);
 
 #endif //LIBFT_H
