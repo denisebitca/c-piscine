@@ -16,7 +16,7 @@ void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map)
 {
 	int	x;
 
-	while (++i < map->dimensions.x)
+	while (++i < map->dimensions.x + 2)
 		map->heat_map[i] = -1;
 	while (lines[++y])
 	{
@@ -31,6 +31,6 @@ void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map)
 		}
 		map->heat_map[i++] = -1;
 	}
-	while (i < x)
+	while (i < map->dimensions.x + 2)
 		map->heat_map[i++] = -1;
 }
