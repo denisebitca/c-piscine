@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   ft_str.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aronez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 10:46:04 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 10:51:52 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/29 11:19:22 by aronez            #+#    #+#             */
+/*   Updated: 2022/08/29 11:19:22 by aronez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef FT_STR_H
+# define FT_STR_H
 
-typedef struct s_coords
-{
-	int	x;
-	int	y;
-}				t_coords;
+char	*ft_strncat(char *dest, const char *src, int n);
 
-typedef struct s_map
-{
-	char		empty;
-	char		obstacle;
-	char		full;
-	t_coords	dimensions;
-	t_coords	*obstacles;
-}				t_map;
-
-#endif //MAP_H
+#endif //FT_STR_H

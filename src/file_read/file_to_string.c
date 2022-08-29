@@ -10,33 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <malloc.h>
 #include <fcntl.h>
+#include <unistd.h>
+
+#include "src/ft_str/ft_str.h"
 
 #define BUF_SIZE 16384
-
-char	*ft_strncat(char *dest, const char *src, int n)
-{
-	int	len;
-	int	i;
-	
-	len = 0;
-	while (dest[len] != '\0')
-		len++;
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		dest[len + i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[len + i] = '\0';
-		i++;
-	}
-	return (dest);
-}
 
 void	count_len(char buf[BUF_SIZE], ssize_t read_bytes, void *data)
 {
@@ -57,7 +37,7 @@ void	cat_bytes(char buf[BUF_SIZE], ssize_t read_bytes, void *data)
 
 int	apply_to_file(
 		int fd,
-		void (*handle_buf)(char[BUF_SIZE], ssize_t , void *),
+		void (*handle_buf)(char[BUF_SIZE], ssize_t, void *),
 		void *data
 		)
 {

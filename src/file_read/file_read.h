@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   file_read.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aronez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 10:46:04 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 10:51:52 by rbitca           ###   ########.fr       */
+/*   Created: 2022/08/29 11:15:48 by aronez            #+#    #+#             */
+/*   Updated: 2022/08/29 11:15:48 by aronez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef FILE_READ_H
+# define FILE_READ_H
 
-typedef struct s_coords
-{
-	int	x;
-	int	y;
-}				t_coords;
+int	read_whole_file(int fd, const char *filename, char **file_contents);
 
-typedef struct s_map
-{
-	char		empty;
-	char		obstacle;
-	char		full;
-	t_coords	dimensions;
-	t_coords	*obstacles;
-}				t_map;
-
-#endif //MAP_H
+#endif //FILE_READ_H

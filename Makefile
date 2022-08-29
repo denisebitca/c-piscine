@@ -1,4 +1,5 @@
-SRCS		=	src/file_to_string.c
+SRCS		=	src/file_read/file_to_string.c \
+				src/ft_str/ft_str_copies.c
 
 OBJS		= ${SRCS:.c=.o}
 
