@@ -25,7 +25,7 @@ typedef struct s_map
 	char		obstacle;
 	char		full;
 	t_coords	dimensions;
-	t_coords	*obstacles;
+	int			*heat_map;
 }				t_map;
 
 #endif //MAP_H
