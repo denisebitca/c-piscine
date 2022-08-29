@@ -8,6 +8,8 @@ SRCS		=	src/file_read/file_to_string.c \
 				src/map_handling/map_parser.c \
 				src/map_handling/map_printer.c \
 				src/map_handling/splitter.c \
+				src/map_handling/check_dupes.c \
+				src/map_handling/count_newlines.c \
 				src/find_square/find_square.c
 
 OBJS		= ${SRCS:.c=.o}
