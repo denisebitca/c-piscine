@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 10:58:02 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 15:54:34 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/29 16:40:39 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	parse_first_line(const char *fline, t_map *map)
 	rlnum = atoin(fline, i);
 	if (rlnum < 0)
 		return (0);
+	if (!check_dupes(fline, i, len))
+		return (0);
 	map->empty = fline[i++];
 	map->obstacle = fline[i++];
 	map->full = fline[i];
@@ -104,6 +106,8 @@ int	map_parser(const char *contents, t_map *map)
 	lnum = -1;
 	while (lines[++lnum])
 		;
+	if (lnum != count_newlines(contents))
+		return (-1);
 	if (--lnum < 1)
 		return (-1);
 	rlnum = parse_first_line(lines[0], map);

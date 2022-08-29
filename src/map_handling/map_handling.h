@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 11:41:45 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 15:51:34 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/29 16:39:17 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ int		map_printer(t_map map, t_coords tlcorner, int size, char **char_map);
 void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map);
 char	**splitter(const char *str);
 int		atoin(const char *str, int size);
+int		count_newlines(const char *str);
+int		check_dupes(const char *str, int start, int end);
 
 #endif //MAP_HANDLING_H
