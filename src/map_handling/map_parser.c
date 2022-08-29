@@ -77,9 +77,9 @@ int	parse_first_line(const char *fline, t_map *map)
 	len = ft_strlen(fline);
 	if (len < 4 || len > 13)
 		return (0);
-	if (fline[i] < 0 || fline[i] > 9)
+	if (fline[i] < '0' || fline[i] > '9')
 		return (0);
-	while (fline[i] >= 0 && fline[i] <= 9 && i < (len - 3))
+	while (fline[i] >= '0' && fline[i] <= '9' && i < (len - 3))
 		i++;
 	if (i != (len - 3))
 		return (0);
