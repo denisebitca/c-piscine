@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "src/map.h"
 
 int	min(int a, int b, int c)
@@ -24,9 +25,9 @@ int	min(int a, int b, int c)
 	else
 	{
 		if (b <= c)
-			return (c);
+			return (b);
 		else
-			return (a);
+			return (c);
 	}
 }
 
