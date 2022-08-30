@@ -23,7 +23,7 @@ char	*ft_strncat(char *dest, const char *src, int n)
 	while (dest[len] != '\0')
 		len++;
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	while (i < n && src[i] != '\0')
 	{
 		dest[len + i] = src[i];
 		i++;
