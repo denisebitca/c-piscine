@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "src/map.h"
 #include <stdlib.h>
 
 int	populate_square(t_map map, t_coords tlcorner, int size, char **char_map)
@@ -53,7 +53,7 @@ int	map_printer(t_map map, t_coords tlcorner, int size, char **char_map)
 	if ((*char_map) == NULL)
 		return (-1);
 	while (++i < ((x + 2) * (map.dimensions.y + 1)))
-	{	
+	{
 		if (map.heat_map[i] == -1 && curline == (i + 1) / (x + 2))
 			(*char_map)[pos++] = map.obstacle;
 		else if (curline == (i + 1) / (x + 2))
