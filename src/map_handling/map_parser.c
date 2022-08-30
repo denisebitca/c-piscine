@@ -15,23 +15,6 @@
 #include "src/map.h"
 #include "map_handling.h"
 
-int	fill_int_tab(const char **lines, t_map *map)
-{
-	int	x;
-	int	y;
-	int	i;
-
-	i = -1;
-	x = map->dimensions.x;
-	y = map->dimensions.y;
-	map->heat_map = malloc(sizeof(int) * (x + 2) * (y + 2));
-	if (map->heat_map == NULL)
-		return (0);
-	y = 0;
-	fill_int_tab_helper(lines, i, y, map);
-	return (1);
-}
-
 int	chars_in_map_charset(const char *s, t_map *map)
 {
 	int	i;
@@ -94,31 +77,38 @@ int	parse_first_line(const char *fline, t_map *map)
 	return (rlnum);
 }
 
+int		free_lines(const char **lines)
+{
+	int	i;
+
+	i = -1;
+	while (lines[++i])
+		free((void *) lines[i]);
+	free(lines);
+	return (-1);
+}
+
 int	map_parser(const char *contents, t_map *map)
 {
 	int			lnum;
 	int			rlnum;
-	int			i;
 	const char	**lines;
 
-	i = 0;
 	lines = (const char **) splitter(contents);
 	lnum = -1;
 	while (lines[++lnum])
 		;
 	if (lnum != count_newlines(contents))
-		return (-1);
+		return (free_lines(lines));
 	if (--lnum < 1)
-		return (-1);
+		return (free_lines(lines));
 	rlnum = parse_first_line(lines[0], map);
 	if (!rlnum || lnum != rlnum)
-		return (-1);
+		return (free_lines(lines));
 	if (!parse_all_lines(lnum, lines, map))
-		return (-1);
+		return (free_lines(lines));
 	if (!fill_int_tab(lines, map))
-		return (-1);
-	while (lines[++i])
-		free((void *) lines[i]);
-	free(lines);
+		return (free_lines(lines));
+	free_lines(lines);
 	return (0);
 }

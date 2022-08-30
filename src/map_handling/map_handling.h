@@ -17,7 +17,7 @@
 
 int		map_parser(const char *contents, t_map *map);
 int		map_printer(t_map map, t_coords tlcorner, int size, char **char_map);
-void	fill_int_tab_helper(const char **lines, int i, int y, t_map *map);
+int		fill_int_tab(const char **lines, t_map *map);
 char	**splitter(const char *str);
 int		atoin(const char *str, int size);
 int		count_newlines(const char *str);
