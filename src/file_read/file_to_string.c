@@ -11,62 +11,88 @@
 /* ************************************************************************** */
 
 #include <malloc.h>
-#include <fcntl.h>
 #include <unistd.h>
 
 #include "src/file_read/file_read.h"
 
-void	count_len(char buf[BUF_SIZE], ssize_t read_bytes, void *data);
-void	cat_bytes(char buf[BUF_SIZE], ssize_t read_bytes, void *data);
-int		apply_to_file(
-			int fd,
-			void (*handle_buf)(char[BUF_SIZE], ssize_t, void *),
-			void *data
-			);
-
-int	reopen_file(int fd, const char *filename)
+char	*realloc_buf(char *buf, ssize_t bufs_count)
 {
-	if (close(fd) < 0)
-		return (-1);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (-1);
-	return (fd);
+	int		i;
+	int		j;
+	char	*prev_buf;
+
+	prev_buf = buf;
+	buf = malloc(sizeof(char) * (BUF_SIZE + 1) * (bufs_count + 1));
+	if (buf == NULL)
+	{
+		free(prev_buf);
+		return (NULL);
+	}
+	i = -1;
+	while (++i < bufs_count)
+	{
+		j = -1;
+		while (prev_buf[i * (BUF_SIZE + 1) + ++j] != '\0')
+			buf[i * (BUF_SIZE + 1) + j] = prev_buf[i * (BUF_SIZE + 1) + j];
+		buf[i * (BUF_SIZE + 1) + j] = '\0';
+	}
+	free(prev_buf);
+	return (buf);
 }
 
-int	reopen_standard_input(int fd, const char *dummy_filename)
+void	flatten_file_contents(const char *buf,
+			char *file_contents,
+			ssize_t bufs_count
+			)
 {
-	(void)fd;
-	(void)dummy_filename;
-	return (0);
+	int	i;
+	int	j;
+	int	k;
+
+	k = -1;
+	i = -1;
+	while (++i < bufs_count)
+	{
+		j = -1;
+		while (buf[i * (BUF_SIZE + 1) + ++j] != '\0')
+			file_contents[++k] = buf[i * (BUF_SIZE + 1) + j];
+	}
+	file_contents[k + 1] = '\0';
 }
 
-int	read_whole_file(
-		int fd,
-		const char *filename,
-		int (*reset_file)(int, const char *),
-		char **file_contents
-		)
+ssize_t	read_next_buf(char **buf, ssize_t bufs_count, int fd)
+{
+	*buf = realloc_buf(*buf, bufs_count);
+	if (*buf == NULL)
+		return (-1);
+	return (read(fd, *buf + (bufs_count * (BUF_SIZE + 1)), BUF_SIZE));
+}
+
+int	read_whole_file(int fd, char **file_contents)
 {
 	ssize_t	len;
-	int		i;
+	ssize_t	bufs_count;
+	char	*buf;
+	ssize_t	read_bytes;
 
 	len = 0;
-	if (apply_to_file(fd, &count_len, &len) < 0)
-		return (-1);
-	fd = reset_file(fd, filename);
-	if (fd < 0)
-		return (-1);
+	bufs_count = -1;
+	buf = NULL;
+	read_bytes = read_next_buf(&buf, ++bufs_count, fd);
+	if (read_bytes < 0)
+		return (free(buf), -1);
+	while (read_bytes != 0)
+	{
+		buf[bufs_count * (BUF_SIZE + 1) + read_bytes] = '\0';
+		len += read_bytes;
+		read_bytes = read_next_buf(&buf, ++bufs_count, fd);
+		if (read_bytes < 0)
+			return (free(buf), -1);
+	}
 	*file_contents = malloc(sizeof(char) * (len + 1));
 	if (*file_contents == NULL)
-		return (-1);
-	i = -1;
-	while (++i < len + 1)
-		(*file_contents)[i] = '\0';
-	if (apply_to_file(fd, &cat_bytes, *file_contents) < 0)
-	{
-		free(*file_contents);
-		return (-1);
-	}
+		return (free(buf), -1);
+	flatten_file_contents(buf, *file_contents, bufs_count);
+	free(buf);
 	return (0);
 }

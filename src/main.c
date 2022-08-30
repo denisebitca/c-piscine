@@ -52,7 +52,7 @@ int	input_from_command_line(void)
 	char	*solving_result;
 	int		solving_status;
 
-	if (read_whole_file(0, "", &reopen_standard_input, &standard_input) < 0)
+	if (read_whole_file(0, &standard_input) < 0)
 		return (-1);
 	solving_status = solve_map(standard_input, &solving_result);
 	if (solving_status < 0)
@@ -78,7 +78,7 @@ int	solve_map_from_file(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	if (read_whole_file(fd, filename, &reopen_file, &file_contents) < 0)
+	if (read_whole_file(fd, &file_contents) < 0)
 		return (-1);
 	solving_status = solve_map(file_contents, &solving_result);
 	if (solving_status < 0)

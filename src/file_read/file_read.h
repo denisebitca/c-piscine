@@ -13,15 +13,8 @@
 #ifndef FILE_READ_H
 # define FILE_READ_H
 
-# define BUF_SIZE 16384
+# define BUF_SIZE 16383
 
-int	read_whole_file(
-		int fd,
-		const char *filename,
-		int (*reset_file)(int, const char *),
-		char **file_contents
-		);
-int	reopen_file(int fd, const char *filename);
-int	reopen_standard_input(int fd, const char *dummy_filename);
+int	read_whole_file(int fd, char **file_contents);
 
 #endif //FILE_READ_H
