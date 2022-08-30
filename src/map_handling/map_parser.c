@@ -77,14 +77,17 @@ int	parse_first_line(const char *fline, t_map *map)
 	return (rlnum);
 }
 
-int		free_lines(const char **lines)
+int	free_lines(const char **lines)
 {
 	int	i;
 
 	i = -1;
-	while (lines[++i])
-		free((void *) lines[i]);
-	free(lines);
+	if (lines != NULL)
+	{
+		while (lines[++i])
+			free((void *) lines[i]);
+		free(lines);
+	}
 	return (-1);
 }
 
@@ -96,7 +99,7 @@ int	map_parser(const char *contents, t_map *map)
 
 	lines = (const char **) splitter(contents);
 	lnum = -1;
-	while (lines[++lnum])
+	while (lines && lines[++lnum])
 		;
 	if (lnum != count_newlines(contents))
 		return (free_lines(lines));

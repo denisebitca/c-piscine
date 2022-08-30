@@ -47,11 +47,13 @@ int	word_counter(const char *str)
 	return (info[0]);
 }
 
-void	write_word(char **ret, int *info, const char *str, int curpos)
+int	write_word(char **ret, int *info, const char *str, int curpos)
 {
 	int	i;
 	int	j;
 
+	if (ret[info[3]] == NULL)
+		return (0);
 	i = curpos - info[0] + 1;
 	j = 0;
 	while (i <= curpos)
@@ -60,6 +62,7 @@ void	write_word(char **ret, int *info, const char *str, int curpos)
 	info[0] = 0;
 	info[1] = 0;
 	info[2] = 0;
+	return (1);
 }
 
 /*
@@ -70,7 +73,7 @@ void	write_word(char **ret, int *info, const char *str, int curpos)
  * info[3] - current space
  * 
 */
-void	alloc_mem(char **ret, const char *str)
+int	alloc_mem(char **ret, const char *str)
 {
 	int		info[4];
 	int		i;
@@ -92,19 +95,33 @@ void	alloc_mem(char **ret, const char *str)
 		if (info[1] && info[2])
 		{
 			ret[info[3]] = malloc(sizeof(char) * (info[0] + 1));
-			write_word(ret, info, str, i);
+			if (!write_word(ret, info, str, i))
+				return (0);
 		}
 	}
-	ret[info[3]] = 0;
+	return (1);
 }
 
 char	**splitter(const char *str)
 {
 	char	**ret;
+	int		wc;
+	int		i;
 
-	ret = malloc(sizeof(char *) * (word_counter(str) + 1));
+	i = -1;
+	wc = word_counter(str) + 1;
+	ret = malloc(sizeof(char *) * wc);
+	while (++i < wc)
+		ret[i] = 0;
 	if (ret == NULL)
 		return (ret);
-	alloc_mem(ret, str);
+	if (!alloc_mem(ret, str))
+	{
+		i = -1;
+		while (ret[++i] != NULL)
+			free(ret[i]);
+		free(ret);
+		return (NULL);
+	}
 	return (ret);
 }

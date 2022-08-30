@@ -42,7 +42,7 @@ int	fill_int_tab(const char **lines, t_map *map)
 	int	x;
 	int	y;
 	int	i;
-	
+
 	i = -1;
 	x = map->dimensions.x;
 	y = map->dimensions.y;
