@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 10:58:02 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/29 16:40:39 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/08/31 13:53:35 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,19 @@
 int	chars_in_map_charset(const char *s, t_map *map)
 {
 	int	i;
+	int	obstacle_check;
 
 	i = -1;
+	obstacle_check = 1;
 	while (s[++i])
+	{
 		if (s[i] != map->empty && s[i] != map->obstacle)
 			return (0);
+		if (s[i] == map->empty)
+			obstacle_check = 0;
+	}
+	if (obstacle_check)
+		return (2);
 	return (1);
 }
 
@@ -31,7 +39,9 @@ int	parse_all_lines(int lnum, const char **lines, t_map *map)
 	int	i;
 	int	toplsize;
 	int	cursize;
+	int	empty;
 
+	empty = 0;
 	i = 1;
 	toplsize = ft_strlen(lines[i]);
 	if (toplsize < 1)
@@ -45,9 +55,11 @@ int	parse_all_lines(int lnum, const char **lines, t_map *map)
 			return (0);
 		if (!chars_in_map_charset(lines[i], map))
 			return (0);
+		if (chars_in_map_charset(lines[i], map) == 1)
+			empty = 1;
 	}
 	map->dimensions = (t_coords){toplsize, lnum};
-	return (1);
+	return (empty);
 }
 
 int	parse_first_line(const char *fline, t_map *map)
