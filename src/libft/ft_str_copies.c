@@ -35,21 +35,3 @@ char	*ft_strncat(char *dest, const char *src, int n)
 	}
 	return (dest);
 }
-
-int	ft_str_dup(const char *src, char **dest)
-{
-	int	src_len;
-	int	i;
-
-	src_len = ft_strlen(src);
-	*dest = malloc(sizeof(char) * (src_len + 1));
-	if (*dest == NULL)
-		return (-1);
-	i = 0;
-	while (i < src_len + 1)
-	{
-		(*dest)[i] = src[i];
-		i++;
-	}
-	return (0);
-}
