@@ -77,7 +77,7 @@ int	parse_first_line(const char *fline, t_map *map)
 	return (rlnum);
 }
 
-int	free_lines(const char **lines)
+void	free_lines(const char **lines)
 {
 	int	i;
 
@@ -88,7 +88,6 @@ int	free_lines(const char **lines)
 			free((void *) lines[i]);
 		free(lines);
 	}
-	return (-1);
 }
 
 int	map_parser(const char *contents, t_map *map)
@@ -102,16 +101,15 @@ int	map_parser(const char *contents, t_map *map)
 	while (lines && lines[++lnum])
 		;
 	if (lnum != count_newlines(contents))
-		return (free_lines(lines));
+		return (free_lines(lines), -1);
 	if (--lnum < 1)
-		return (free_lines(lines));
+		return (free_lines(lines), -1);
 	rlnum = parse_first_line(lines[0], map);
 	if (!rlnum || lnum != rlnum)
-		return (free_lines(lines));
+		return (free_lines(lines), -1);
 	if (!parse_all_lines(lnum, lines, map))
-		return (free_lines(lines));
+		return (free_lines(lines), -1);
 	if (!fill_int_tab(lines, map))
-		return (free_lines(lines));
-	free_lines(lines);
-	return (0);
+		return (free_lines(lines), -1);
+	return (free_lines(lines), 0);
 }

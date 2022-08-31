@@ -26,24 +26,13 @@ int	solve_map(const char *input_map, char **output_map)
 	t_coords	square_tl_corner;
 	int			square_size;
 
-	if (map_parser(input_map, &map) >= 0)
-	{
-		if (find_largest_square(map, &square_tl_corner, &square_size) >= 0)
-		{
-			if (map_printer(
-					map,
-					square_tl_corner,
-					square_size,
-					output_map
-				) >= 0)
-			{
-				free(map.heat_map);
-				return (0);
-			}
-		}
-		free(map.heat_map);
-	}
-	return (-1);
+	if (map_parser(input_map, &map) < 0)
+		return (-1);
+	if (find_largest_square(map, &square_tl_corner, &square_size) < 0)
+		return (free(map.heat_map), -1);
+	if (map_printer(map, square_tl_corner, square_size, output_map) < 0)
+		return (free(map.heat_map), -1);
+	return (free(map.heat_map), 0);
 }
 
 int	input_from_command_line(void)
@@ -55,17 +44,15 @@ int	input_from_command_line(void)
 	if (read_whole_file(0, &standard_input) < 0)
 		return (-1);
 	solving_status = solve_map(standard_input, &solving_result);
+	free(standard_input);
 	if (solving_status < 0)
 	{
 		ft_str_write("map error\n");
-		free(standard_input);
 		return (solving_status);
 	}
 	if (ft_str_write(solving_result) < 0)
 		solving_status = -1;
-	free(solving_result);
-	free(standard_input);
-	return (solving_status);
+	return (free(solving_result), solving_status);
 }
 
 int	solve_map_from_file(const char *filename)
@@ -81,19 +68,17 @@ int	solve_map_from_file(const char *filename)
 	if (read_whole_file(fd, &file_contents) < 0)
 		return (-1);
 	solving_status = solve_map(file_contents, &solving_result);
+	free(file_contents);
+	if (close(fd) < 0)
+		solving_status = -1;
 	if (solving_status < 0)
 	{
 		ft_str_write("map error\n");
-		free(file_contents);
 		return (solving_status);
 	}
 	if (ft_str_write(solving_result) < 0)
 		solving_status = -1;
-	if (close(fd) < 0)
-		solving_status = -1;
-	free(solving_result);
-	free(file_contents);
-	return (solving_status);
+	return (free(solving_result), solving_status);
 }
 
 int	input_from_files(const char **filenames)

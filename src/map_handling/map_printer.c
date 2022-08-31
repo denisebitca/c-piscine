@@ -50,7 +50,7 @@ int	map_printer(t_map map, t_coords tlcorner, int size, char **char_map)
 	pos = 0;
 	curline = 1;
 	*char_map = malloc(sizeof(char) * (x + 1) * map.dimensions.y + 1);
-	if ((*char_map) == NULL)
+	if (*char_map == NULL)
 		return (-1);
 	while (++i < ((x + 2) * (map.dimensions.y + 1)))
 	{

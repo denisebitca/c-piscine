@@ -93,6 +93,5 @@ int	read_whole_file(int fd, char **file_contents)
 	if (*file_contents == NULL)
 		return (free(buf), -1);
 	flatten_file_contents(buf, *file_contents, bufs_count);
-	free(buf);
-	return (0);
+	return (free(buf), 0);
 }

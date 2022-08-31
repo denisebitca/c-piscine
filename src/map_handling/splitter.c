@@ -111,10 +111,10 @@ char	**splitter(const char *str)
 	i = -1;
 	wc = word_counter(str) + 1;
 	ret = malloc(sizeof(char *) * wc);
-	while (++i < wc)
-		ret[i] = 0;
 	if (ret == NULL)
 		return (ret);
+	while (++i < wc)
+		ret[i] = NULL;
 	if (!alloc_mem(ret, str))
 	{
 		i = -1;
