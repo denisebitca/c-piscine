@@ -17,6 +17,6 @@
 
 int		ft_strlen(const char *str);
 
-ssize_t	ft_str_write(const char *str);
+ssize_t	ft_str_write(int fd, const char *str);
 
 #endif //LIBFT_H

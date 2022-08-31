@@ -14,10 +14,10 @@
 
 #include "src/libft/libft.h"
 
-ssize_t	ft_str_write(const char *str)
+ssize_t	ft_str_write(int fd, const char *str)
 {
 	ssize_t	write_status;
 
-	write_status = write(1, str, ft_strlen(str));
+	write_status = write(fd, str, ft_strlen(str));
 	return (write_status);
 }

@@ -47,10 +47,10 @@ int	input_from_command_line(void)
 	free(standard_input);
 	if (solving_status < 0)
 	{
-		ft_str_write("map error\n");
+		ft_str_write(2, "map error\n");
 		return (solving_status);
 	}
-	if (ft_str_write(solving_result) < 0)
+	if (ft_str_write(1, solving_result) < 0)
 		solving_status = -1;
 	return (free(solving_result), solving_status);
 }
@@ -73,10 +73,10 @@ int	solve_map_from_file(const char *filename)
 		solving_status = -1;
 	if (solving_status < 0)
 	{
-		ft_str_write("map error\n");
+		ft_str_write(2, "map error\n");
 		return (solving_status);
 	}
-	if (ft_str_write(solving_result) < 0)
+	if (ft_str_write(1, solving_result) < 0)
 		solving_status = -1;
 	return (free(solving_result), solving_status);
 }
@@ -91,7 +91,7 @@ int	input_from_files(const char **filenames)
 	filenames++;
 	while (*filenames != NULL)
 	{
-		if (ft_str_write("\n") < 0)
+		if (ft_str_write(1, "\n") < 0)
 			solving_status = -1;
 		if (solve_map_from_file(*filenames) < 0)
 			solving_status = -1;
