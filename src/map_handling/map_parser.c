@@ -6,7 +6,7 @@
 /*   By: rbitca <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 10:58:02 by rbitca            #+#    #+#             */
-/*   Updated: 2022/08/31 13:53:35 by rbitca           ###   ########.fr       */
+/*   Updated: 2022/09/01 10:49:16 by rbitca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	parse_all_lines(int lnum, const char **lines, t_map *map)
 	empty = 0;
 	i = 1;
 	toplsize = ft_strlen(lines[i]);
-	if (toplsize < 1)
+	if (toplsize < 1 || !chars_in_map_charset(lines[i], map))
 		return (0);
-	if (!chars_in_map_charset(lines[i], map))
-		return (0);
+	if (chars_in_map_charset(lines[i], map) == 1)
+		empty = 1;
 	while (++i <= lnum)
 	{
 		cursize = ft_strlen(lines[i]);
